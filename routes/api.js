@@ -4,7 +4,6 @@ const router = express.Router();
 
 router.get("/suggest", async (req, res) => {
     const query = req.query.q;
-    
     try {
         const result = await axios("https://yukimath.onrender.com/suggest?keyword=" + query);
         const data = await result.data;

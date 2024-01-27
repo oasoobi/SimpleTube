@@ -1,0 +1,291 @@
+<html lang="ja">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>LiteYoutube</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400&display=swap');
+
+        * {
+            padding: 0;
+            margin: 0;
+            font-family: 'Noto Sans JP', sans-serif;
+        }
+
+        header {
+            background: rgba(255, 255, 255, 0.84);
+            border-radius: 16px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(8.3px);
+            -webkit-backdrop-filter: blur(8.3px);
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            color: rgb(0, 0, 0);
+            font-size: 10px;
+
+            h1 {
+                margin-left: 20px;
+            }
+
+            a {
+                text-decoration: none;
+                color: #000000;
+            }
+
+            input {
+                border: none;
+                font-size: 16px;
+                width: 2rem;
+                height: 2rem;
+                border-radius: 5px;
+                padding-left: 2rem;
+                background: no-repeat left .4em center / 1em url("../icons/search");
+                cursor: pointer;
+                transition: width 0.2s, margin 0.2s;
+                margin-right: 5px;
+
+                &:hover {
+                    background-color: #dfdfdf;
+                }
+
+                &:focus {
+                    width: 10rem;
+                    margin-left: 0;
+                    outline: 1px #000000;
+                    border: 1px solid #b3b3b3;
+                    cursor: text;
+                    background-color: white;
+                }
+            }
+
+            .buttons {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-right: 5rem;
+            }
+
+            a {
+                background-color: #ffffff;
+                min-width: 2rem;
+                min-height: 2rem;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                cursor: pointer;
+
+                &:hover {
+                    border-radius: 5px;
+                    background-color: #dfdfdf;
+                }
+            }
+
+            h1 {
+                padding-left: 2px;
+                padding-right: 2px;
+                min-width: 140px;
+                width: auto;
+            }
+
+            img {
+                width: 17px;
+            }
+        }
+
+        body {
+            background-color: rgb(255, 255, 255)
+        }
+
+        main {
+            h1 {
+                margin-top: 5rem;
+                margin-bottom: 3rem;
+                text-align: center;
+            }
+
+            .searchbox {
+                text-align: center;
+
+                input {
+                    border: 1px solid #b3b3b3;
+                    border-radius: 5px;
+                    height: 40px;
+                    width: 25rem;
+                    padding-left: 2rem;
+                    font-size: 16px;
+                    background: no-repeat left .5em center / 1em url("../icons/search");
+
+                    &:focus {
+                        outline: none;
+                    }
+                }
+
+
+                #search:placeholder-shown+.center {
+                    display: none;
+                }
+
+                #search:not(:placeholder-shown)+.center {
+                    display: block;
+                }
+
+
+                ul {
+                    margin-top: 5px;
+                    margin-left: 0 auto;
+                    margin-right: 0 auto;
+                    border: 1px solid#b3b3b3;
+                    width: 25rem;
+                    border-radius: 5px;
+                    position: absolute;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    list-style: none;
+
+                    li {
+                        cursor: pointer;
+                        display: flex;
+                        width: 100%;
+                        height: 35px;
+
+                        &:hover {
+                            background-color: #dfdfdf;
+                        }
+                    }
+
+                    a {
+                        text-decoration: none;
+                        color: #000000;
+                        margin-left: 5px;
+                        font-size: 16px;
+                        width: 100%;
+                        height: 35px;
+                        display: flex;
+                        align-items: center;
+                    }
+                }
+
+
+
+
+
+                .center {
+                    display: flex;
+                    text-align: left;
+                    position: relative;
+                }
+
+            }
+
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        li {
+            cursor: pointer;
+            display: flex;
+            background-color: #ffffff;
+            margin-left: 20%;
+            margin-right: 20%;
+            border-radius: 10px;
+            width: 60%;
+            height: 200px;
+            border: 1px solid #dfdfdf;
+            margin-bottom: 1rem;
+
+            .icon {
+                width: 120px;
+                height: 120;
+                border-radius: 100px;
+                margin-top: 40px;
+                margin-left: 20px;
+            }
+
+            .verified {
+                width: 16px;
+                height: 16px;
+                margin-left: 5px;
+                margin-top: 1rem;
+            }
+
+            p {
+                margin-top: 0.6rem;
+                font-size: 18px;
+                margin-left: 1rem;
+            }
+
+            .c-name {
+                display: flex;
+                margin-top: 1rem;
+            }
+
+            .Thumbnail {
+                display: flex;
+                margin-top: 10px;
+                margin-left: 10px;
+                border-radius: 8px;
+                height: 180px;
+                width: auto;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1><a href="/">LiteYoutube</a></h1>
+        <div class="buttons">
+            <input type="text" placeholder="search" id="headerSearch">
+            <a href="../settings"><img src="../icons/settings" alt="settings"></a>
+        </div>
+    </header>
+    <main>
+        <h1>
+            <%= searchWord %>の検索結果
+        </h1>
+        <ul>
+            <li class="channel">
+                <img src="https://yt3.ggpht.com/FHxTj-29McSL3t7KmWyDyGmfmBPMlPaDrZmCLzIXwJhHPCDrsMQDn8meM8-0w5pVMGKBFnF4WBM=s176-c-k-c0x00ffffff-no-rj-mo"
+                    alt="" class="icon">
+                <div class="info-all">
+                    <div class="c-name">
+                        <p>Latte</p>
+                        <img src="../icons/verified" alt="verified" class="verified">
+                        <p>@latte1729</p>
+                    </div>
+                    <div class="c-info">
+                        <p>登録者数 117000人</p>
+                        <p>Latte(ラテ)と言います！ きまま〜にゆっくり実況を投稿していきます！ ｢Latte｣の立ち絵はくまの巣様に依頼(有償)をして描いて ...</p>
+                    </div>
+                </div>
+            </li>
+            <li class="video">
+                <img src="https://yt.artemislena.eu/vi/dnGHeG2RX1c/maxres.jpg" alt="Thumbnail" class="Thumbnail">
+                
+            </li>
+        </ul>
+    </main>
+</body>
+<script>
+    const headerSearch = document.getElementById("headerSearch");
+    headerSearch.addEventListener("keydown", function () {
+        if (event.key == "Enter") {
+            window.location.href = "../search/" + headerSearch.value.replace(/ /g, "+");
+        }
+    })
+    function decodeHTMLEntities(text) {
+        const doc = new DOMParser().parseFromString(text, 'text/html');
+        return doc.body.textContent || "";
+    }
+
+    const searchResult = decodeHTMLEntities("<%= JSON.stringify(result) %>");
+    const data = JSON.parse(searchResult);
+    console.log(data);
+</script>
+
+</html>

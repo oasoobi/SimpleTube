@@ -1,14 +1,15 @@
 const express = require('express');
 const path = require("path");
-const apiRouter = require("./routes/api")
+const apiRouter = require("./routes/api");
+const searchRouter = require("./routes/search");
 const app = express();
 const port = 3000;
-
-
 app.use(express.json());
+app.set("view engine", "ejs");
 
-app.use("/api", apiRouter);
-app.use((req, res) => {
+
+
+app.use((req, res, next) => {
     if (req.url === "/") {
         return res.sendFile(path.join(__dirname, "static/pages", "top.html"));
     }
@@ -19,10 +20,6 @@ app.use((req, res) => {
 
     if (req.url.startsWith("/channel/")) {
         return res.sendFile(path.join(__dirname, "static/pages", "channel.html"));
-    }
-    
-    if (req.url.startsWith("/search/")) {
-        return res.sendFile(path.join(__dirname, "static/pages", "search.html"));
     }
 
     if (req.url.startsWith("/playlist/")) {
@@ -38,21 +35,19 @@ app.use((req, res) => {
         console.log(filename);
         return res.sendFile(path.join(__dirname, "static/icons", filename));
     }
+    next(); // 次のミドルウェアに処理を渡す
 
-    res.sendFile(path.join(__dirname, "static/pages/error", "404.html"));
+    // res.sendFile(path.join(__dirname, "static/pages/error", "404.html"));
 });
 
-app.use((req, res) => {
-    res.sendFile(path.join(__dirname, "static/pages/error", "404.html"));
-});
- 
+app.use("/api", apiRouter); //ルートの読み込み
+app.use("/search", searchRouter);
+
 app.use((req, res, err) => {
-    res.sendFile(path.join(__dirname, "static/pages/error", "500.html"));
+    res.sendFile(path.join(__dirname, "static/pages/error", "404.html"));
     console.log(err);
 });
 
 app.listen(port, () => {
     console.log(`Server is running on http://localhost:${port}`);
 });
-
-
