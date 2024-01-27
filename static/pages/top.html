@@ -1,0 +1,164 @@
+<html lang="ja">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>LiteYoutube</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        header {
+            background: rgba(255, 255, 255, 0.84);
+            border-radius: 16px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(8.3px);
+            -webkit-backdrop-filter: blur(8.3px);
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            color: rgb(0, 0, 0);
+            font-size: 10px;
+
+            h1 {
+                margin-left: 20px;
+            }
+
+            a {
+                text-decoration: none;
+                color: #000000;
+            }
+
+            input {
+                border: none;
+                font-size: 18px;
+                width: 2rem;
+                height: 2rem;
+                border-radius: 5px;
+                padding-left: 2rem;
+                background: no-repeat left .4em center / 1em url("../icons/search");
+                cursor: pointer;
+                transition: width 0.2s, margin 0.2s;
+                margin-right: 5px;
+
+                &:hover {
+                    background-color: #dfdfdf;
+                }
+
+                &:focus {
+                    width: 10rem;
+                    margin-left: 0;
+                    outline: 1px #000000;
+                    border: 1px solid #b3b3b3;
+                    cursor: text;
+                    background-color: white;
+                }
+            }
+
+            .buttons {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-right: 5rem;
+            }
+
+            a {
+                background-color: #ffffff;
+                min-width: 2rem;
+                min-height: 2rem;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                cursor: pointer;
+
+                &:hover {
+                    border-radius: 5px;
+                    background-color: #dfdfdf;
+                }
+            }
+
+            h1 {
+                padding-left: 2px;
+                padding-right: 2px;
+                min-width: 140px;
+                width: auto;
+            }
+
+            img {
+                width: 17px;
+            }
+        }
+
+        body {
+            background-color: rgb(255, 255, 255)
+        }
+
+        main {
+            h1 {
+                margin-top: 3rem;
+                text-align: center;
+            }
+
+            .searchbox {
+                text-align: center;
+
+                input {
+                    border: 1px solid #b3b3b3;
+                    border-radius: 5px;
+                    height: 40px;
+                    width: 25rem;
+                    padding-left: 2rem;
+                    font-size: 16px;
+                    &::before {
+                        content: url(../icons/search);
+                    }
+
+                    &:focus {
+                        outline: none;
+                    }
+                }
+
+                #search:placeholder-shown+#searchCandidates {
+                    display: none;
+                }
+
+                #search:not(:placeholder-shown)+#searchCandidates {
+                    display: block;
+                }
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1><a href="/">LiteYoutube</a></h1>
+        <div class="buttons">
+            <input type="text" placeholder="search">
+            <a href="settings"><img src="../icons/settings" alt="settings"></a>
+        </div>
+    </header>
+    <main>
+        <h1>LiteYoutube</h1>
+        <div class="searchbox">
+            <input type="search" title="search" placeholder="search" id="search" autocomplete="off">
+            <ul id="searchCandidates">
+                <li>1</li>
+                <li>2</li>
+                <li>3</li>
+                <li>4</li>
+                <li>5</li>
+                <li>6</li>
+                <li>7</li>
+                <li>8</li>
+                <li>9</li>
+                <li>10</li>
+            </ul>
+        </div>
+    </main>
+</body>
+
+</html>

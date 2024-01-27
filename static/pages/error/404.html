@@ -1,0 +1,79 @@
+<html lang="ja">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>LiteYoutube 404</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        body {
+            background-color: rgb(255, 255, 255);
+            overflow-y: hidden;
+        }
+
+        main {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        p {
+            text-align: center;
+        }
+
+        .msg {
+            h1 {
+                text-align: center;
+                font-size: 50px;
+            }
+
+            p {
+                font-weight: bold;
+                font-size: 25px;
+                text-align: center;
+            }
+
+            button {
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+                background: white;
+                width: 8rem;
+                height: 2.5rem;
+                border: 1px solid black;
+                border-radius: 5px;
+                font-size: 18px;
+                font-weight: bold;
+                cursor: pointer;
+
+                &:hover {
+                    background: #eeeeee;
+                }
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <div class="msg">
+            <h1>404</h1>
+            <p>このページにはなにもないよ！</p>
+            <button type="button" title="back"
+                onclick="window.location.href = document.referrer ? document.referrer : '/'">
+                back
+            </button>
+        </div>
+    </main>
+
+</body>
+<script>
+    console.log(document.referrer)
+</script>
+
+</html>
