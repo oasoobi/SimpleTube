@@ -21,4 +21,25 @@ router.get("/search/:q/:page?", async (req, res) => {
     res.json(data);
 })
 
+router.get('/image', async (req, res) => {
+    try {
+      const vid = req.query.id;
+      const apiUrl = `https://yt.artemislena.eu/vi/${vid}/mqdefault.jpg`;
+      console.log(apiUrl);
+      
+      // Fetch the image data
+      const response = await axios.get(apiUrl, { responseType: 'arraybuffer' });
+  
+      // Set the Content-Type to image/jpeg
+      res.setHeader('Content-Type', 'image/jpeg');
+  
+      // Send the image data as the response
+      res.send(Buffer.from(response.data));
+    } catch (error) {
+      console.error('Error fetching and sending image:', error.message);
+      res.status(500).send('Internal Server Error');
+    }
+  });
+  
+
 module.exports = router;

@@ -1,0 +1,200 @@
+<html lang="ja">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>LiteYoutube</title>
+    <!-- <link rel="stylesheet" href="../../styles/top"> -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400&display=swap');
+
+        * {
+            padding: 0;
+            margin: 0;
+            font-family: 'Noto Sans JP', sans-serif;
+        }
+
+        header {
+            background: rgba(255, 255, 255, 0.84);
+            border-radius: 16px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(8.3px);
+            -webkit-backdrop-filter: blur(8.3px);
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            color: rgb(0, 0, 0);
+            font-size: 10px;
+
+            h1 {
+                margin-left: 20px;
+            }
+
+            a {
+                text-decoration: none;
+                color: #000000;
+            }
+
+            input {
+                border: none;
+                font-size: 16px;
+                width: 2rem;
+                height: 2rem;
+                border-radius: 5px;
+                padding-left: 2rem;
+                background: no-repeat left .5em center / 1em url("../icons/search");
+                cursor: pointer;
+                transition: width 0.2s, margin 0.2s;
+                margin-right: 5px;
+
+                &:hover {
+                    background-color: #dfdfdf;
+                }
+
+                &:focus {
+                    width: 10rem;
+                    margin-left: 0;
+                    outline: 1px #000000;
+                    border: 1px solid #b3b3b3;
+                    cursor: text;
+                    background-color: white;
+                }
+            }
+
+            .buttons {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-right: 5rem;
+            }
+
+            a {
+                background-color: #ffffff;
+                min-width: 2rem;
+                min-height: 2rem;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                cursor: pointer;
+
+                &:hover {
+                    border-radius: 5px;
+                    background-color: #dfdfdf;
+                }
+            }
+
+            h1 {
+                padding-left: 2px;
+                padding-right: 2px;
+                min-width: 140px;
+                width: auto;
+            }
+
+            img {
+                width: 17px;
+            }
+        }
+
+        body {
+            background-color: rgb(255, 255, 255)
+        }
+
+        main {
+            text-align: center;
+        }
+
+        img {
+            width: 70%;
+        }
+
+        .video-info {
+            margin-left: 10%;
+            margin-right: 10%;
+            margin-top: 1rem;
+            width: 80%;
+            border: #dfdfdf solid 1px;
+            height: 80px;
+            border-radius: 8px;
+            background: #b3b3b3;
+            img {
+                width: 16px;
+                height: 16px;
+            }
+
+            .statistics {
+                display: flex;
+            }
+
+            .desc {
+                display: flex;
+                justify-content: space-between;
+                white-space: pre-line;
+
+                p {
+                    padding-top: 5px;
+                }
+            }
+
+
+            .icon {
+                width: 32px;
+                height: 32px;
+                object-fit: cover;
+                border-radius: 50%;
+                margin-top: 5px;
+                margin-left: 0.5rem;
+            }
+
+            .title {
+                text-align: left;
+                margin-top: 0.5rem;
+                margin-left: 0.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1><a href="/">LiteYoutube</a></h1>
+        <div class="buttons">
+            <input type="text" placeholder="search" id="headerSearch">
+            <a href="settings"><img src="../icons/settings" alt="settings"></a>
+        </div>
+    </header>
+    <main>
+        <div class="watch">
+            <img src="https://yt.artemislena.eu/vi/n67Gh4OxpWA/maxres.jpg" alt="Thumbnail">
+            <div class="video-info">
+                <div>
+                    <p class="title">ブルーアーカイブ Blue Archive OST 152. Aoharu Band Arrange</p>
+                </div>
+                <div class="statistics">
+                    <img src="https://yt3.ggpht.com/ytc/AIf8zZSHEu8sdjtDy416MkSkMWKW7OEqrrXh3YYEZmEU=s32-c-k-c0x00ffffff-no-rj"
+                        alt="MO2" class="icon">
+                    <p>MO2</p>
+                    <p>85.6k 人</p>
+                    <p>996733 回視聴</p>
+                    <img src="../../icons/good" alt="good: ">
+                    <p>14701</p>
+                </div>
+                <!-- <pre class="desc">Composer: Mitsukiyo (Twitter: https://twitter.com/mitsukiyo_5)\nElectronic Guitar by: NezMayo (https://twitter.com/nezmayoi), JuNN (https://twitter.com/JuNN_guitar)\n\nReleased as Track 13, Disc 2 of OST album Vol. 4\n\nBlue Archive Official Website (JP): https://bluearchive.jp/\nBlue Archive Official Website (Global): https://bluearchive.nexon.com/\n\nStream / Download the albums here -\nVol 1: https://nex-tone.link/A00094941\nVol 2: https://nex-tone.link/A00102108\nVol 3: https://nex-tone.link/A00111577\nVol 4: https://nex-tone.link/A00120144\n\nBlue Archive is an RPG mobile title developed by NAT Games and published by Yostar in Japan and by Nexon globally. The player will be a teacher that leads their students into various incidents around the city.\n\nThis video is solely intended for promoting and education purposes and have no means of monetization. This channel is not affiliated with NAT Games, Yostar or Nexon in any ways.\n\n#ブルーアーカイブ #BlueArchive #OST #블루아카이브 #蔚藍檔案</pre> -->
+            </div>
+            <div class="video-comment"></div>
+            <div class="recommend-videos"></div>
+        </div>
+
+    </main>
+</body>
+<script>
+    //header検索
+    const headerSearch = document.getElementById("headerSearch");
+    headerSearch.addEventListener("keydown", function () {
+        if (event.key == "Enter") {
+            window.location.href = "search/" + headerSearch.value.replace(/ /g, "+");
+        }
+    })
+</script>
+
+</html>

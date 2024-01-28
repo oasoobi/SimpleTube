@@ -1,0 +1,166 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400&display=swap");
+
+* {
+  padding: 0;
+  margin: 0;
+  font-family: "Noto Sans JP", sans-serif;
+}
+
+header {
+  background: rgba(255, 255, 255, 0.84);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(8.3px);
+  -webkit-backdrop-filter: blur(8.3px);
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: rgb(0, 0, 0);
+  font-size: 10px;
+}
+
+header h1 {
+  margin-left: 20px;
+}
+
+header a {
+  text-decoration: none;
+  color: #000000;
+}
+
+header input {
+  border: none;
+  font-size: 16px;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 5px;
+  padding-left: 2rem;
+  background: no-repeat left 0.5em center/1em url("../icons/search");
+  cursor: pointer;
+  transition: width 0.2s, margin 0.2s;
+  margin-right: 5px;
+}
+
+header input:hover {
+  background-color: #dfdfdf;
+}
+
+header input:focus {
+  width: 10rem;
+  margin-left: 0;
+  outline: 1px #000000;
+  border: 1px solid #b3b3b3;
+  cursor: text;
+  background-color: white;
+}
+
+header .buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 5rem;
+}
+
+header a {
+  background-color: #ffffff;
+  min-width: 2rem;
+  min-height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+header a:hover {
+  border-radius: 5px;
+  background-color: #dfdfdf;
+}
+
+header h1 {
+  padding-left: 2px;
+  padding-right: 2px;
+  min-width: 140px;
+  width: auto;
+}
+
+header img {
+  width: 17px;
+}
+
+body {
+  background-color: rgb(255, 255, 255);
+}
+
+main h1 {
+  margin-top: 5rem;
+  text-align: center;
+}
+
+main .searchbox {
+  text-align: center;
+}
+
+main .searchbox input {
+  border: 1px solid #b3b3b3;
+  border-radius: 5px;
+  height: 40px;
+  width: 25rem;
+  padding-left: 2rem;
+  font-size: 16px;
+  background: no-repeat left 0.5em center/1em url("../icons/search");
+}
+
+main .searchbox input:focus {
+  outline: none;
+}
+
+main .searchbox #search:placeholder-shown+.center {
+  display: none;
+}
+
+main .searchbox #search:not(:placeholder-shown)+.center {
+  display: block;
+}
+
+main .searchbox ul {
+  margin-top: 5px;
+  margin-left: 0 auto;
+  margin-right: 0 auto;
+  border: 1px solid #b3b3b3;
+  width: 25rem;
+  border-radius: 5px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  list-style: none;
+}
+
+main .searchbox a {
+  text-decoration: none;
+  color: #000000;
+  margin-left: 5px;
+  font-size: 16px;
+  width: 100%;
+  height: 35px;
+  display: flex;
+  align-items: center;
+}
+
+main .searchbox li {
+  display: flex;
+  width: 100%;
+  height: 35px;
+}
+
+main .searchbox li:hover {
+  background-color: #dfdfdf;
+}
+
+main .searchbox .center {
+  display: flex;
+  text-align: left;
+  position: relative;
+}
+
+/*# sourceMappingURL=top.css.map */
