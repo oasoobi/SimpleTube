@@ -42,7 +42,7 @@
                 height: 2rem;
                 border-radius: 5px;
                 padding-left: 2rem;
-                background: no-repeat left .4em center / 1em url("../icons/search");
+                background: no-repeat left .5em center / 1em url("../../icons/search");
                 cursor: pointer;
                 transition: width 0.2s, margin 0.2s;
                 margin-right: 5px;
@@ -92,6 +92,9 @@
 
             img {
                 width: 17px;
+                user-select: none;
+                -webkit-user-drag: none;
+                -moz-user-select: none;
             }
         }
 
@@ -106,81 +109,34 @@
                 text-align: center;
             }
 
-            .searchbox {
-                text-align: center;
-
-                input {
-                    border: 1px solid #b3b3b3;
-                    border-radius: 5px;
-                    height: 40px;
-                    width: 25rem;
-                    padding-left: 2rem;
-                    font-size: 16px;
-                    background: no-repeat left .5em center / 1em url("../icons/search");
-
-                    &:focus {
-                        outline: none;
-                    }
-                }
 
 
-                #search:placeholder-shown+.center {
-                    display: none;
-                }
 
-                #search:not(:placeholder-shown)+.center {
-                    display: block;
-                }
-
-
-                ul {
-                    margin-top: 5px;
-                    margin-left: 0 auto;
-                    margin-right: 0 auto;
-                    border: 1px solid#b3b3b3;
-                    width: 25rem;
-                    border-radius: 5px;
-                    position: absolute;
-                    left: 50%;
-                    transform: translateX(-50%);
-                    list-style: none;
-
-                    li {
-                        cursor: pointer;
-                        display: flex;
-                        width: 100%;
-                        height: 35px;
-
-                        &:hover {
-                            background-color: #dfdfdf;
-                        }
-                    }
-
-                    a {
-                        text-decoration: none;
-                        color: #000000;
-                        margin-left: 5px;
-                        font-size: 16px;
-                        width: 100%;
-                        height: 35px;
-                        display: flex;
-                        align-items: center;
-                    }
-                }
+            a {
+                text-decoration: none;
+                color: #000000;
+                margin-left: 5px;
+                font-size: 16px;
+                width: 100%;
+                height: 35px;
+                display: flex;
+                align-items: center;
+            }
 
 
 
 
 
-                .center {
-                    display: flex;
-                    text-align: left;
-                    position: relative;
-                }
 
+            .center {
+                display: flex;
+                text-align: left;
+                position: relative;
             }
 
         }
+
+
 
         ul {
             list-style: none;
@@ -188,6 +144,7 @@
 
         li {
             cursor: pointer;
+            overflow-wrap: break-all;
             display: flex;
             background-color: #ffffff;
             margin-left: 20%;
@@ -197,6 +154,12 @@
             height: 200px;
             border: 1px solid #dfdfdf;
             margin-bottom: 1rem;
+            transition: all;
+            transition-duration: .2s;
+
+            &:hover {
+                background-color: #dfdfdf;
+            }
 
             .icon {
                 width: 120px;
@@ -204,6 +167,9 @@
                 border-radius: 100px;
                 margin-top: 40px;
                 margin-left: 20px;
+                user-select: none;
+                -webkit-user-drag: none;
+                -moz-user-select: none;
             }
 
             .verified {
@@ -211,6 +177,9 @@
                 height: 16px;
                 margin-left: 5px;
                 margin-top: 1rem;
+                user-select: none;
+                -webkit-user-drag: none;
+                -moz-user-select: none;
             }
 
             p {
@@ -231,6 +200,61 @@
                 border-radius: 8px;
                 height: 180px;
                 width: auto;
+                user-select: none;
+                -webkit-user-drag: none;
+                -moz-user-select: none;
+            }
+
+            .v-name {
+                display: flex;
+                margin-top: 1.5rem;
+            }
+
+            .title {
+                width: calc(100% - 2rem);
+                overflow-wrap: break-all;
+            }
+
+            .desc {
+                width: calc(100% - 2rem);
+                overflow-wrap: break-all;
+            }
+
+            .video-info {
+                padding-left: -50%;
+                margin-top: 6rem;
+                overflow-wrap: break-all;
+            }
+        }
+
+        .video-data,
+        .playlist-data {
+            flex-grow: 1;
+        }
+
+        footer {
+            margin-left: 20%;
+            margin-right: 20%;
+            width: 60%;
+            margin-bottom: 100px;
+            margin-top: 10px;
+
+            button {
+                cursor: pointer;
+                border: 1px solid #dfdfdf;
+                background: white;
+                width: 90%;
+                margin-left: 5%;
+                margin-right: 5%;
+                height: 50px;
+                border-radius: 5px;
+                user-select: none;
+                transition: all;
+                transition-duration: 0.2s;
+
+                &:hover {
+                    background-color: #dfdfdf;
+                }
             }
         }
     </style>
@@ -241,51 +265,113 @@
         <h1><a href="/">LiteYoutube</a></h1>
         <div class="buttons">
             <input type="text" placeholder="search" id="headerSearch">
-            <a href="../settings"><img src="../icons/settings" alt="settings"></a>
+            <a href="../../settings"><img src="../../icons/settings" alt="settings"></a>
         </div>
     </header>
     <main>
         <h1>
             <%= searchWord %>の検索結果
         </h1>
-        <ul>
-            <li class="channel">
-                <img src="https://yt3.ggpht.com/FHxTj-29McSL3t7KmWyDyGmfmBPMlPaDrZmCLzIXwJhHPCDrsMQDn8meM8-0w5pVMGKBFnF4WBM=s176-c-k-c0x00ffffff-no-rj-mo"
-                    alt="" class="icon">
-                <div class="info-all">
-                    <div class="c-name">
-                        <p>Latte</p>
-                        <img src="../icons/verified" alt="verified" class="verified">
-                        <p>@latte1729</p>
-                    </div>
-                    <div class="c-info">
-                        <p>登録者数 117000人</p>
-                        <p>Latte(ラテ)と言います！ きまま〜にゆっくり実況を投稿していきます！ ｢Latte｣の立ち絵はくまの巣様に依頼(有償)をして描いて ...</p>
-                    </div>
-                </div>
-            </li>
-            <li class="video">
-                <img src="https://yt.artemislena.eu/vi/dnGHeG2RX1c/maxres.jpg" alt="Thumbnail" class="Thumbnail">
-                
-            </li>
+        <ul id="results">
         </ul>
+        <footer>
+            <button type="button" onclick="load(lastPage);">もっっっと見る</button>
+        </footer>
     </main>
 </body>
 <script>
-    const headerSearch = document.getElementById("headerSearch");
-    headerSearch.addEventListener("keydown", function () {
-        if (event.key == "Enter") {
-            window.location.href = "../search/" + headerSearch.value.replace(/ /g, "+");
-        }
-    })
-    function decodeHTMLEntities(text) {
-        const doc = new DOMParser().parseFromString(text, 'text/html');
-        return doc.body.textContent || "";
+    function channelTemplate(data) {
+        const templete =
+            `<li class="channel">
+                <img src="${data.authorThumbnails[0].url}"
+                    alt="" class="icon">
+                <div class="info-all">
+                    <div class="c-name">
+                        <p>${data.author}</p>
+                        <img src="../../icons/verified" alt="verified" class="verified" style="${data.authorVerified ? "display:block" : "display:none;" /*10万人以上の場合のみ表示*/}">
+                        <p>${data.channelHandle}</p>
+                    </div>
+                    <div class="c-info">
+                        <p>登録者数 ${data.subCount}人</p>
+                        <p class="desc">${data.description}</p>
+                    </div>
+                </div>
+            </li>`;
+        return templete;
     }
 
-    const searchResult = decodeHTMLEntities("<%= JSON.stringify(result) %>");
-    const data = JSON.parse(searchResult);
-    console.log(data);
+    function videoTemplete(data) {
+        const templete = `<li class="video">
+                <img src="${data.videoThumbnails[4].url}" alt="Thumbnail" class="Thumbnail">
+                <div class="video-data">                
+                <p class="title">${data.title}</p>
+                <div class="v-name">
+                    <p>${data.author}</p>
+                    <img src="../../icons/verified" alt="verified" class="verified" style="${data.authorVerified ? "display:block" : "display:none;" /*10万人以上の場合のみ表示*/}">
+                </div>
+                    <p>${data.viewCount} 回視聴</p>
+                    <p>${data.publishedText}</p>
+                </div>
+            </li>`;
+        return templete;
+    }
+    function playlistTemplete(data) {
+        const templete = `<li class="playlist">
+                <img src="${data.playlistThumbnail}" alt="Thumbnail" class="Thumbnail">
+                <div class="playlist-data">
+                <p class="title">${data.title}</p>
+                <div class="v-name">
+                    <p>${data.author}</p>
+                    <img src="../../icons/verified" alt="verified" class="verified" style="${data.authorVerified ? "display:block" : "display:none;" /*10万人以上の場合のみ表示*/}">
+                </div>
+                    <p>${data.videoCount} 本の動画</p>
+                    <p>再生リスト</p>
+                </div>
+            </li>`;
+        return templete;
+    }
+    let lastPage = Number("<%- page -1%>");
+    const headerSearch = document.getElementById("headerSearch");
+    const results = document.getElementById("results");
+
+    headerSearch.addEventListener("keydown", function () {
+        if (event.key == "Enter") {
+            window.location.href = "../../search/" + headerSearch.value.replace(/ /g, "+");
+        }
+    });
+    load(lastPage);
+    async function GetData(page) {
+        try {
+            const apiUrl = "<%- apiUrl %>" + `/${page}`;
+            const response = await fetch(apiUrl);
+            const data = await response.json();
+            return data;
+        } catch (err) {
+            console.error("Error:", err);
+        }
+    }
+    async function load() {
+        lastPage++; //ページを増やす
+        console.log(lastPage)
+        const data = await GetData(lastPage);
+        if (data) {
+            data.forEach(dataItem => {
+                if (dataItem.type == "channel") {
+                    results.innerHTML += channelTemplate(dataItem);
+                } else if (dataItem.type == "video") {
+                    results.innerHTML += videoTemplete(dataItem);
+                } else if (dataItem.type == "playlist") {
+                    results.innerHTML += playlistTemplete(dataItem);
+                }
+            });
+        }
+    };
+
+
+    // async function内での処理
+
+
+
 </script>
 
 </html>
