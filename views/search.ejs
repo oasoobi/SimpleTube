@@ -119,7 +119,7 @@
                     result = lastResult[lastResult.length - 1];
                 }
                 result.addEventListener("click", function () {
-                    window.location.href = dataItem.type == "channel" ? ".." + dataItem.authorUrl : dataItem.type == "video" ? "../watch/" + dataItem.videoId : "../playlist/" + dataItem.playlistId;
+                    window.location.href = dataItem.type == "channel" ? "../.." + dataItem.authorUrl : dataItem.type == "video" ? "../../watch/" + dataItem.videoId : "../../playlist/" + dataItem.playlistId;
                 });
             });
         }
