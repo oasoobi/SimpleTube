@@ -88,7 +88,6 @@
                 padding-left: 2px;
                 padding-right: 2px;
                 min-width: 140px;
-                width: auto;
             }
 
             img {
@@ -108,49 +107,227 @@
             width: 70%;
         }
 
-        .video-info {
-            margin-left: 10%;
-            margin-right: 10%;
+
+
+        .watch {
             margin-top: 1rem;
-            width: 80%;
-            border: #dfdfdf solid 1px;
-            height: 80px;
-            border-radius: 8px;
-            background: #b3b3b3;
-            img {
-                width: 16px;
-                height: 16px;
-            }
 
-            .statistics {
-                display: flex;
-            }
+            .video {
+                margin-left: 10%;
+                margin-right: 10%;
+                width: 80%;
+                border: 1px solid #dfdfdf;
+                margin-bottom: .5rem;
+                border-radius: 8px;
 
-            .desc {
-                display: flex;
-                justify-content: space-between;
-                white-space: pre-line;
-
-                p {
-                    padding-top: 5px;
+                img {
+                    margin-left: 2.5%;
+                    margin-right: 2.5%;
+                    width: 95%;
+                    padding-top: 2.5%;
+                    padding-bottom: 1.5%;
+                    border: none;
+                    border-radius: 0;
                 }
             }
 
+            .video-info {
+                margin-left: 10%;
+                margin-right: 10%;
+                margin-top: 1rem;
+                width: 80%;
+                border: #dfdfdf solid 1px;
+                height: 80px;
+                border-radius: 8px;
+                background: #ffffff;
 
-            .icon {
-                width: 32px;
-                height: 32px;
-                object-fit: cover;
-                border-radius: 50%;
-                margin-top: 5px;
-                margin-left: 0.5rem;
+                img {
+                    width: 16px;
+                    height: 16px;
+                }
+
+                .statistics {
+                    display: flex;
+                    margin-left: 0.5rem;
+                    align-items: center;
+                    margin-top: 0.5em;
+                    img {
+                        margin-left: 5px;
+                        margin-right: 1px;
+                        -webkit-user-select: none;
+                        -moz-user-select: none;
+                        user-select: none;
+                        -webkit-user-drag: none;
+                        -moz-user-select: none;
+                    }
+
+                    p {
+                        margin-right: 5px;
+                    }
+
+                }
+
+                pre {
+                    border-radius: 8px;
+                    margin-top: 1.5rem;
+                    padding-top: 0.5rem;
+                    padding-left: 0.5rem;
+                    border: 1px solid #dfdfdf;
+                    text-align: left;
+                    white-space: pre-line;
+                }
+
+
+                .icon {
+                    width: 32px;
+                    height: 32px;
+                    object-fit: cover;
+                    border-radius: 50%;
+                    margin-top: 5px;
+                    margin-left: 0.5rem;
+                    -webkit-user-select: none;
+                    -moz-user-select: none;
+                    user-select: none;
+                    -webkit-user-drag: none;
+                    -moz-user-select: none;
+                }
+
+                .title {
+                    text-align: left;
+                    margin-top: 0.5rem;
+                    margin-left: 0.5rem;
+                }
             }
 
-            .title {
-                text-align: left;
-                margin-top: 0.5rem;
-                margin-left: 0.5rem;
+            .channel-info {
+                margin-top: 2.5rem;
+                height: 50px;
+                background: #ffffff;
+                border: #dfdfdf solid 1px;
+                align-items: center;
+                justify-content: left;
+                display: flex;
+                border-radius: 8px;
+                justify-content: space-between;
+                display: flex;
+
+                img {
+                    justify-content: none;
+                    margin-right: 5px;
+                    border: 1px solid #bbbbbb;
+                    -webkit-user-select: none;
+                    -moz-user-select: none;
+                    user-select: none;
+                    -webkit-user-drag: none;
+                    -moz-user-select: none;
+                }
+
+                p {
+                    margin-right: 5px;
+                }
+
+                .channel {
+                    display: flex;
+                    align-items: center;
+                }
+
+                button {
+                    -webkit-user-select: none;
+                    user-select: none;
+                    height: 30px;
+                    width: 120px;
+                    border: 1px solid #dfdfdf;
+                    background: none;
+                    border-radius: 5px;
+                    cursor: pointer;
+                    transition: all;
+                    transition-duration: 0.2s;
+                    margin-right: 0.5rem;
+
+                    &:hover {
+                        background: #dfdfdf;
+                    }
+                }
             }
+        }
+
+        .other {
+            margin-left: 10%;
+            margin-right: 10%;
+            display: flex;
+            width: 80%;
+            height: 50%;
+
+            .comment {
+                width: 50%;
+                min-height: 50%;
+            }
+
+            .recommended {
+                width: 50%;
+                min-height: 50%;
+            }
+        }
+
+        .r-video {
+            cursor: pointer;
+            overflow-wrap: break-all;
+            display: flex;
+            background-color: #ffffff;
+            border-radius: 8px;
+            width: 100%;
+            height: 200px;
+            border: 1px solid #dfdfdf;
+            margin-bottom: 1rem;
+            transition: all;
+            transition-duration: 0.2s;
+
+            .v-Thumbnail {
+                display: flex;
+                margin-top: 10px;
+                margin-left: 10px;
+                border-radius: 8px;
+                height: 180px;
+                width: auto;
+                -webkit-user-select: none;
+                -moz-user-select: none;
+                user-select: none;
+                -webkit-user-drag: none;
+                -moz-user-select: none;
+            }
+
+            .verified {
+                width: 16px;
+                height: 16px;
+                margin-left: 5px;
+                margin-top: 1rem;
+                -webkit-user-select: none;
+                -moz-user-select: none;
+                user-select: none;
+                -webkit-user-drag: none;
+                -moz-user-select: none;
+            }
+
+            p {
+                margin-top: 0.6rem;
+                font-size: 18px;
+                margin-left: 1rem;
+            }
+
+            .v-name {
+                display: flex;
+                margin-top: 1.5rem;
+            }
+
+            .v-title {
+                width: calc(100% - 2rem);
+                overflow-wrap: break-all;
+            }
+
+            .video-data {
+                flex-grow: 1;
+            }
+
         }
     </style>
 </head>
@@ -165,34 +342,78 @@
     </header>
     <main>
         <div class="watch">
-            <img src="https://yt.artemislena.eu/vi/n67Gh4OxpWA/maxres.jpg" alt="Thumbnail">
+            <div class="video">
+                <img src="https://yt.artemislena.eu/vi/n67Gh4OxpWA/maxres.jpg" alt="Thumbnail" class="video">
+            </div>
             <div class="video-info">
                 <div>
                     <p class="title">ブルーアーカイブ Blue Archive OST 152. Aoharu Band Arrange</p>
                 </div>
+
                 <div class="statistics">
-                    <img src="https://yt3.ggpht.com/ytc/AIf8zZSHEu8sdjtDy416MkSkMWKW7OEqrrXh3YYEZmEU=s32-c-k-c0x00ffffff-no-rj"
-                        alt="MO2" class="icon">
-                    <p>MO2</p>
-                    <p>85.6k 人</p>
                     <p>996733 回視聴</p>
+                    <p>10か月前</p>
                     <img src="../../icons/good" alt="good: ">
                     <p>14701</p>
                 </div>
-                <!-- <pre class="desc">Composer: Mitsukiyo (Twitter: https://twitter.com/mitsukiyo_5)\nElectronic Guitar by: NezMayo (https://twitter.com/nezmayoi), JuNN (https://twitter.com/JuNN_guitar)\n\nReleased as Track 13, Disc 2 of OST album Vol. 4\n\nBlue Archive Official Website (JP): https://bluearchive.jp/\nBlue Archive Official Website (Global): https://bluearchive.nexon.com/\n\nStream / Download the albums here -\nVol 1: https://nex-tone.link/A00094941\nVol 2: https://nex-tone.link/A00102108\nVol 3: https://nex-tone.link/A00111577\nVol 4: https://nex-tone.link/A00120144\n\nBlue Archive is an RPG mobile title developed by NAT Games and published by Yostar in Japan and by Nexon globally. The player will be a teacher that leads their students into various incidents around the city.\n\nThis video is solely intended for promoting and education purposes and have no means of monetization. This channel is not affiliated with NAT Games, Yostar or Nexon in any ways.\n\n#ブルーアーカイブ #BlueArchive #OST #블루아카이브 #蔚藍檔案</pre> -->
+                <div class="channel-info">
+                    <div class="channel">
+                        <img src="https://yt3.ggpht.com/ytc/AIf8zZSHEu8sdjtDy416MkSkMWKW7OEqrrXh3YYEZmEU=s32-c-k-c0x00ffffff-no-rj"
+                            alt="MO2" class="icon">
+                        <p>MO2</p>
+                        <p>登録者数 85.6k 人</p>
+                    </div>
+                    <button type="button">チャンネルを見る</button>
+                </div>
+                <div class="desc">
+                    <pre>
+                        Composer: Mitsukiyo (Twitter: https://twitter.com/mitsukiyo_5)
+                        Electronic Guitar by: NezMayo (https://twitter.com/nezmayoi), JuNN (https://twitter.com/JuNN_guitar)
+                        
+                        Released as Track 13, Disc 2 of OST album Vol. 4
+                        
+                        Blue Archive Official Website (JP): https://bluearchive.jp/
+                        Blue Archive Official Website (Global): https://bluearchive.nexon.com/
+                        
+                        Stream / Download the albums here -
+                        Vol 1: https://nex-tone.link/A00094941
+                        Vol 2: https://nex-tone.link/A00102108
+                        Vol 3: https://nex-tone.link/A00111577
+                        Vol 4: https://nex-tone.link/A00120144
+                        
+                        Blue Archive is an RPG mobile title developed by NAT Games and published by Yostar in Japan and by Nexon globally. The player will be a teacher that leads their students into various incidents around the city.
+                        This video is solely intended for promoting and education purposes and have no means of monetization. This channel is not affiliated with NAT Games, Yostar or Nexon in any ways.
+                        #ブルーアーカイブ #BlueArchive #OST #블루아카이브 #蔚藍檔案
+                    </pre>
+                </div>
             </div>
-            <div class="video-comment"></div>
-            <div class="recommend-videos"></div>
-        </div>
-
     </main>
+    <div class="other">
+        <!-- コメントと関連動画 -->
+        <div class="comment"></div>
+        <div class="recommended">
+            <div class="r-video">
+                <img src="https://yt.artemislena.eu/vi/lgq0OdRIEao/mqdefault.jpg" alt="Thumbnail" class="v-Thumbnail">
+                <div class="video-data">
+                    <p class="v-title">ブルーアーカイブ Blue Archive OST 59. RE Aoharu</p>
+                    <div class="v-name">
+                        <p>MO2</p>
+                        <img src="../../icons/verified" alt="verified" class="verified">
+                    </div>
+                    <p>3399816 回視聴</p>
+                </div>
+                </li>
+            </div>
+
+        </div>
+    </div>
 </body>
 <script>
     //header検索
     const headerSearch = document.getElementById("headerSearch");
     headerSearch.addEventListener("keydown", function () {
         if (event.key == "Enter") {
-            window.location.href = "search/" + headerSearch.value.replace(/ /g, "+");
+            window.location.href = "../search/" + headerSearch.value.replace(/ /g, "+");
         }
     })
 </script>
