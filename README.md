@@ -1,5 +1,7 @@
 ## Simple Youtube
 
+日本語向けです。
+
 Credit
 - [feathericons](https://feathericons.com)
 - [octicons](https://primer.style/foundations/icons)
