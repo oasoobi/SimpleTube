@@ -2,4 +2,4 @@
 
 Credit
 - [feathericons](https://feathericons.com)
-- [octicons](https://primer.style/icons)
+- [octicons](https://primer.style/foundations/icons)
