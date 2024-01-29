@@ -6,4 +6,4 @@ Credit
 - [noto sans JP](https://fonts.google.com/noto/specimen/Noto+Sans+JP)
 
 ## ScreenShots
-![TOP page](https://i.imgur.com/Zsk5LqL.png))
+![TOP page](https://i.imgur.com/Kygar7S.png)
