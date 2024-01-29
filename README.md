@@ -1,6 +1,6 @@
 ## Simple Youtube
 
-日本語向けです。
+日本語用です。
 
 Credit
 - [feathericons](https://feathericons.com)
