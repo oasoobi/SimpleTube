@@ -20,6 +20,8 @@
 /api/image?id=[videoId]
 
 
-返信の取得方法
+### 返信の取得方法
 yourinstance/api/v1/comments/[videoId]?hl=ja&thin_mode=false&continuation=[continuation]action=action_get_comment_replies
+
+
 format=htmlをつけるとhtmlとして取得可能
