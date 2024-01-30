@@ -10,3 +10,7 @@ Credit
 ## ScreenShots
 ![TOP](https://i.imgur.com/Kygar7S.png)
 ![Search](https://i.imgur.com/5aGVPut.png)
+
+## API Memo
+
+/api/v1/channel/[channelID]
