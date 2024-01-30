@@ -12,5 +12,9 @@ Credit
 ![Search](https://i.imgur.com/5aGVPut.png)
 
 ## API Memo
-
-/api/v1/channel/[channelID]
+# 検索候補を取得
+/api/suggest?q=[keyword]
+# 検索結果を取得
+/api/search/[keyword]/[page]
+# 画像サムネイルを取得
+/api/image?id=[videoId]
