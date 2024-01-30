@@ -68,7 +68,6 @@ router.get("/videos/:id/comments/:continuation", async (req, res) => {
     console.error("Error: ", error); 7
     res.status(500).send("Internal Server Error");
   }
-
 })
 
 router.get("/videos/:id", async (req, res) => {
@@ -83,6 +82,5 @@ router.get("/videos/:id", async (req, res) => {
     res.status(500).send("Internal Server Error");
   }
 });
-
 
 module.exports = router;
