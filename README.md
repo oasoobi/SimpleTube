@@ -21,7 +21,7 @@
 ### 動画を取得
 api/videos/[videoId]
 ### 動画のコメントを取得
-/api/videos/[videoId]/comment
+/api/videos/[videoId]/comments
 ### コメントの返信を取得
 /api/videos/[videoId]/comment/[continuation]
 ## 忘備録
