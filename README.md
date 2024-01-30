@@ -18,3 +18,7 @@
 /api/search/[keyword]/[page]
 ### サムネイルを取得
 /api/image?id=[videoId]
+
+
+返信の取得方法
+https://yt.artemislena.eu/api/v1/comments/[videoId]?hl=ja&thin_mode=false&continuation=[continuation]action=action_get_comment_replies
