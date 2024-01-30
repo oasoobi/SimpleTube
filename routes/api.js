@@ -32,19 +32,55 @@ router.get('/image', async (req, res) => {
   try {
     const vid = req.query.id;
     const apiUrl = `https://yt.artemislena.eu/vi/${vid}/mqdefault.jpg`;
-    console.log(apiUrl);
-
-    // Fetch the image data
     const response = await axios.get(apiUrl, { responseType: 'arraybuffer' });
-
-    // Set the Content-Type to image/jpeg
     res.setHeader('Content-Type', 'image/jpeg');
-
-    // Send the image data as the response
     res.send(Buffer.from(response.data));
   } catch (error) {
     console.error('Error fetching and sending image:', error.message);
     res.status(500).send('Internal Server Error');
+  }
+});
+
+router.get("/videos/:id/comments", async (req, res) => {
+  try {
+    const vid = req.params.id;
+    const apiUrl = `https://yt.artemislena.eu/api/v1/comments/${vid}`;
+    const response = await axios.get(apiUrl);
+    const data = await response.data;
+    res.json(data);
+  } catch (error) {
+    console.error("Error: ", error); 7
+    res.status(500).send("Internal Server Error");
+  }
+
+})
+
+router.get("/videos/:id/comments/:continuation", async (req, res) => {
+  try {
+    const vid = req.params.id;
+    const continuation = req.params.continuation;
+    const apiUrl = `https://yt.artemislena.eu/api/v1/comments/${vid}?hl=ja&thin_mode=false&continuation=${continuation}&action=action_get_comment_replies`;
+    console.log(apiUrl)
+    const response = await axios.get(apiUrl);
+    const data = await response.data;
+    res.json(data);
+  } catch (error) {
+    console.error("Error: ", error); 7
+    res.status(500).send("Internal Server Error");
+  }
+
+})
+
+router.get("/videos/:id", async (req, res) => {
+  try {
+    const vid = req.params.id;
+    const apiUrl = `https://yt.artemislena.eu/api/v1/videos/${vid}`;
+    const response = await axios.get(apiUrl);
+    const data = await response.data;
+    res.json(data);
+  } catch (error) {
+    console.error("Error: ", error);
+    res.status(500).send("Internal Server Error");
   }
 });
 

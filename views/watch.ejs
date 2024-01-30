@@ -121,6 +121,11 @@
                 border-radius: 8px;
 
                 img {
+                    -webkit-user-select: none;
+                    -moz-user-select: none;
+                    user-select: none;
+                    -webkit-user-drag: none;
+                    -moz-user-select: none;
                     margin-left: 2.5%;
                     margin-right: 2.5%;
                     width: 95%;
@@ -136,9 +141,6 @@
                 margin-right: 10%;
                 margin-top: 1rem;
                 width: 80%;
-                border: #dfdfdf solid 1px;
-                height: 80px;
-                border-radius: 8px;
                 background: #ffffff;
 
                 img {
@@ -151,6 +153,7 @@
                     margin-left: 0.5rem;
                     align-items: center;
                     margin-top: 0.5em;
+
                     img {
                         margin-left: 5px;
                         margin-right: 1px;
@@ -175,6 +178,7 @@
                     border: 1px solid #dfdfdf;
                     text-align: left;
                     white-space: pre-line;
+                    padding-bottom: 1rem;
                 }
 
 
@@ -200,7 +204,7 @@
             }
 
             .channel-info {
-                margin-top: 2.5rem;
+                margin-top: 1rem;
                 height: 50px;
                 background: #ffffff;
                 border: #dfdfdf solid 1px;
@@ -231,12 +235,23 @@
                     align-items: center;
                 }
 
+                .verified {
+                    border: none;
+                    width: 16px;
+                    height: 16px;
+                    -webkit-user-select: none;
+                    -moz-user-select: none;
+                    user-select: none;
+                    -webkit-user-drag: none;
+                    -moz-user-select: none;
+                }
+
                 button {
                     -webkit-user-select: none;
                     user-select: none;
-                    height: 30px;
+                    height: 35px;
                     width: 120px;
-                    border: 1px solid #dfdfdf;
+                    border: none;
                     background: none;
                     border-radius: 5px;
                     cursor: pointer;
@@ -254,80 +269,147 @@
         .other {
             margin-left: 10%;
             margin-right: 10%;
+            margin-top: 1rem;
             display: flex;
             width: 80%;
             height: 50%;
 
-            .comment {
+            .comments {
                 width: 50%;
                 min-height: 50%;
+
+                .comment {
+                    position: relative;
+
+                    .c-icon {
+                        width: 40px;
+                        height: 40px;
+                        object-fit: cover;
+                        border-radius: 50%;
+                        margin-top: 5px;
+                        margin-left: 0.5rem;
+                        -webkit-user-select: none;
+                        -moz-user-select: none;
+                        user-select: none;
+                        -webkit-user-drag: none;
+                        -moz-user-select: none;
+                    }
+
+                    .c-verified {
+                        width: 16px;
+                        height: 16px;
+                        margin-left: 5px;
+                        margin-top: 1rem;
+                        -webkit-user-select: none;
+                        -moz-user-select: none;
+                        user-select: none;
+                        -webkit-user-drag: none;
+                        -moz-user-select: none;
+                    }
+
+                    .c-like {
+                        width: 17px;
+                    }
+                }
+
+                .recommended {
+                    width: 50%;
+                    min-height: 50%;
+                }
             }
 
-            .recommended {
-                width: 50%;
-                min-height: 50%;
+            .r-video {
+                cursor: pointer;
+                overflow-wrap: break-all;
+                display: flex;
+                background-color: #ffffff;
+                border-radius: 8px;
+                width: 100%;
+                height: 200px;
+                border: 1px solid #dfdfdf;
+                margin-top: 1rem;
+                transition: all;
+                transition-duration: 0.2s;
+
+                &:hover {
+                    background-color: #dfdfdf;
+                }
+
+                .v-Thumbnail {
+                    display: flex;
+                    margin-top: 10px;
+                    margin-left: 10px;
+                    border-radius: 8px;
+                    height: 180px;
+                    width: auto;
+                    -webkit-user-select: none;
+                    -moz-user-select: none;
+                    user-select: none;
+                    -webkit-user-drag: none;
+                    -moz-user-select: none;
+                }
+
+                .verified {
+                    width: 16px;
+                    height: 16px;
+                    margin-left: 5px;
+                    margin-top: 1rem;
+                    -webkit-user-select: none;
+                    -moz-user-select: none;
+                    user-select: none;
+                    -webkit-user-drag: none;
+                    -moz-user-select: none;
+                }
+
+                p {
+                    margin-top: 0.6rem;
+                    font-size: 18px;
+                    margin-left: 1rem;
+                }
+
+                .v-name {
+                    display: flex;
+                    margin-top: 1.5rem;
+                }
+
+                .v-title {
+                    width: calc(100% - 2rem);
+                    overflow-wrap: break-all;
+                }
+
+                .video-data {
+                    flex-grow: 1;
+                }
+
             }
         }
 
-        .r-video {
-            cursor: pointer;
-            overflow-wrap: break-all;
-            display: flex;
-            background-color: #ffffff;
-            border-radius: 8px;
-            width: 100%;
-            height: 200px;
-            border: 1px solid #dfdfdf;
-            margin-bottom: 1rem;
-            transition: all;
-            transition-duration: 0.2s;
+        .c-love {
+            width: 20px;
+            height: 20px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin-top: 5px;
+            margin-left: 0.5rem;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            user-select: none;
+            -webkit-user-drag: none;
+            -moz-user-select: none;
+            position: relative;
+            border: 1px solid #bbbbbb;
 
-            .v-Thumbnail {
-                display: flex;
-                margin-top: 10px;
-                margin-left: 10px;
-                border-radius: 8px;
-                height: 180px;
-                width: auto;
-                -webkit-user-select: none;
-                -moz-user-select: none;
-                user-select: none;
-                -webkit-user-drag: none;
-                -moz-user-select: none;
+            &::after {
+                content: url(../../../icons/heart);
+                display: inline-block;
+                position: absolute;
+                width: 2px;
+                height: 2px;
+                margin-top: 18px;
+                margin-left: -12px;
+                transform: scale(0.6);
+                z-index: 1;
             }
-
-            .verified {
-                width: 16px;
-                height: 16px;
-                margin-left: 5px;
-                margin-top: 1rem;
-                -webkit-user-select: none;
-                -moz-user-select: none;
-                user-select: none;
-                -webkit-user-drag: none;
-                -moz-user-select: none;
-            }
-
-            p {
-                margin-top: 0.6rem;
-                font-size: 18px;
-                margin-left: 1rem;
-            }
-
-            .v-name {
-                display: flex;
-                margin-top: 1.5rem;
-            }
-
-            .v-title {
-                width: calc(100% - 2rem);
-                overflow-wrap: break-all;
-            }
-
-            .video-data {
-                flex-grow: 1;
-            }
-
         }
     </style>
 </head>
@@ -361,6 +443,7 @@
                         <img src="https://yt3.ggpht.com/ytc/AIf8zZSHEu8sdjtDy416MkSkMWKW7OEqrrXh3YYEZmEU=s32-c-k-c0x00ffffff-no-rj"
                             alt="MO2" class="icon">
                         <p>MO2</p>
+                        <img src="../../icons/verified" alt="verified" class="verified">
                         <p>登録者数 85.6k 人</p>
                     </div>
                     <button type="button">チャンネルを見る</button>
@@ -390,8 +473,34 @@
     </main>
     <div class="other">
         <!-- コメントと関連動画 -->
-        <div class="comment"></div>
+        <div class="comments">
+            <h2>コメント</h2>
+            <noscript>
+                <p>コメントを読み込むにはjsを有効にしてください。</p>
+            </noscript>
+            <div id="" class="comment">
+                <div class="contributor"></div>
+                <img src="https://yt3.ggpht.com/yUgY7hr-wwpXEHUDj1eVN0MFHvQ79Ffp2D2K0wwMFrF7AdpWcuX0zpAFO8vWYmeeF-AnpTWPfQ=s48-c-k-c0x00ffffff-no-rj"
+                    alt="icon" class="c-icon">
+                <p>@JuNNguitar</p>
+                <img src="../../icons/verified" alt="verified" class="c-verified">
+                <p>(編集済み)</p>
+                <p>いつもお世話になっていたチャンネルでNezMayoと僕が演奏した曲を聞くことになるとは思いませんでした。本当にありがとうブルアカ<br>항상 신세지고 있는 채널에서 네즈마요와 제가 연주한 곡을
+                    듣게 될줄은 꿈에도 몰랐습니다. 정말 감사합니다<br>I never thought I&#39;d hear a song recorded by Nezmayo and I on
+                    guitar on this channel. thank you soooo much.</p>
+                <img src="../../icons/good" alt="good: " class="c-like">
+                <p>1672</p>
+                <div>
+                    <img src="https://yt3.ggpht.com/ytc/AIf8zZSHEu8sdjtDy416MkSkMWKW7OEqrrXh3YYEZmEU=s176-c-k-c0x00ffffff-no-rj"
+                        alt="icon" class="c-love">
+
+                </div>
+                <p>23 件の返信を表示</p>
+
+            </div>
+        </div>
         <div class="recommended">
+            <h2>関連動画</h2>
             <div class="r-video">
                 <img src="https://yt.artemislena.eu/vi/lgq0OdRIEao/mqdefault.jpg" alt="Thumbnail" class="v-Thumbnail">
                 <div class="video-data">
@@ -404,7 +513,6 @@
                 </div>
                 </li>
             </div>
-
         </div>
     </div>
 </body>

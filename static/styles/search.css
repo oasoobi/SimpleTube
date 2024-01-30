@@ -242,12 +242,15 @@ footer button {
   user-select: none;
   transition: all;
   transition-duration: 0.2s;
-  color: rgb(0, 110, 255);
+  color: #2589d0;
 }
 
 footer button:hover {
   background-color: #dfdfdf;
+}
 
+#load-anim {
+  text-align: center;
 }
 
 /*# sourceMappingURL=styles.css.map */
