@@ -12,9 +12,9 @@
 ![Search](https://i.imgur.com/5aGVPut.png)
 
 # API Memo
-## 検索候補を取得
+### 検索候補を取得
 /api/suggest?q=[keyword]
-## 検索結果を取得
+### 検索結果を取得
 /api/search/[keyword]/[page]
-## 画像サムネイルを取得
+### 画像サムネイルを取得
 /api/image?id=[videoId]
