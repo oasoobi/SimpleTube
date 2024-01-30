@@ -1,0 +1,448 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400&display=swap");
+
+* {
+  padding: 0;
+  margin: 0;
+  font-family: "Noto Sans JP", sans-serif;
+}
+
+header {
+  background: rgba(255, 255, 255, 0.84);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(8.3px);
+  -webkit-backdrop-filter: blur(8.3px);
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: rgb(0, 0, 0);
+  font-size: 10px;
+}
+
+header h1 {
+  margin-left: 20px;
+}
+
+header a {
+  text-decoration: none;
+  color: #000000;
+}
+
+header input {
+  border: none;
+  font-size: 16px;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 5px;
+  padding-left: 2rem;
+  background: no-repeat left 0.5em center/1em url("../icons/search");
+  cursor: pointer;
+  transition: width 0.2s, margin 0.2s;
+  margin-right: 5px;
+}
+
+header input:hover {
+  background-color: #dfdfdf;
+}
+
+header input:focus {
+  width: 10rem;
+  margin-left: 0;
+  outline: 1px #000000;
+  border: 1px solid #b3b3b3;
+  cursor: text;
+  background-color: white;
+}
+
+header .buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 5rem;
+}
+
+header a {
+  background-color: #ffffff;
+  min-width: 2rem;
+  min-height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+header a:hover {
+  border-radius: 5px;
+  background-color: #dfdfdf;
+}
+
+header h1 {
+  padding-left: 2px;
+  padding-right: 2px;
+  min-width: 140px;
+}
+
+header img {
+  width: 17px;
+}
+
+body {
+  background-color: rgb(255, 255, 255);
+}
+
+main {
+  text-align: center;
+}
+
+img {
+  width: 70%;
+}
+
+.watch {
+  margin-top: 1rem;
+}
+
+.watch .video {
+  margin-left: 10%;
+  margin-right: 10%;
+  width: 80%;
+  border: 1px solid #dfdfdf;
+  margin-bottom: 0.5rem;
+  border-radius: 8px;
+}
+
+.watch .video img {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  -webkit-user-drag: none;
+  -moz-user-select: none;
+  margin-left: 2.5%;
+  margin-right: 2.5%;
+  width: 95%;
+  padding-top: 2.5%;
+  padding-bottom: 1.5%;
+  border: none;
+  border-radius: 0;
+}
+
+.watch .video-info {
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-top: 1rem;
+  width: 80%;
+  background: #ffffff;
+}
+
+.watch .video-info img {
+  width: 16px;
+  height: 16px;
+}
+
+.watch .video-info .statistics {
+  display: flex;
+  margin-left: 0.5rem;
+  align-items: center;
+  margin-top: 0.5em;
+}
+
+.watch .video-info .statistics img {
+  margin-left: 5px;
+  margin-right: 1px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  -webkit-user-drag: none;
+  -moz-user-select: none;
+}
+
+.watch .video-info .statistics p {
+  margin-right: 5px;
+}
+
+.watch .video-info pre {
+  border-radius: 8px;
+  margin-top: 1.5rem;
+  padding-top: 0.5rem;
+  padding-left: 0.5rem;
+  border: 1px solid #dfdfdf;
+  text-align: left;
+  white-space: pre-line;
+  padding-bottom: 1rem;
+}
+
+.watch .video-info .icon {
+  width: 32px;
+  height: 32px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-top: 5px;
+  margin-left: 0.5rem;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  -webkit-user-drag: none;
+  -moz-user-select: none;
+}
+
+.watch .video-info .title {
+  text-align: left;
+  margin-top: 0.5rem;
+  margin-left: 0.5rem;
+}
+
+.watch .channel-info {
+  margin-top: 1rem;
+  height: 50px;
+  background: #ffffff;
+  border: #dfdfdf solid 1px;
+  align-items: center;
+  justify-content: left;
+  display: flex;
+  border-radius: 8px;
+  justify-content: space-between;
+  display: flex;
+}
+
+.watch .channel-info img {
+  justify-content: none;
+  margin-right: 5px;
+  border: 1px solid #bbbbbb;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  -webkit-user-drag: none;
+  -moz-user-select: none;
+}
+
+.watch .channel-info p {
+  margin-right: 5px;
+}
+
+.watch .channel-info .channel {
+  display: flex;
+  align-items: center;
+}
+
+.watch .channel-info .verified {
+  display: none;
+  border: none;
+  width: 16px;
+  height: 16px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  -webkit-user-drag: none;
+  -moz-user-select: none;
+}
+
+.watch .channel-info button {
+  -webkit-user-select: none;
+  user-select: none;
+  height: 35px;
+  width: 120px;
+  border: none;
+  background: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all;
+  transition-duration: 0.2s;
+  margin-right: 0.5rem;
+}
+
+.watch .channel-info button:hover {
+  background: #dfdfdf;
+}
+
+.other {
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-top: 1rem;
+  display: flex;
+  width: 80%;
+  height: 50%;
+}
+
+.other .comments {
+  width: 80%;
+  min-height: 50%;
+}
+
+.other .comments .comment {
+  margin-top: 1rem;
+}
+
+.other .comments .comment .c-icon {
+  width: 29px;
+  height: 29px;
+  border: 1px solid #bbbbbb;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-top: 5px;
+  margin-left: 0.5rem;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  -webkit-user-drag: none;
+  -moz-user-select: none;
+}
+
+.other .comments .comment .c-verified {
+  width: 16px;
+  height: 16px;
+  margin-left: 5px;
+  margin-top: 2px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  -webkit-user-drag: none;
+  -moz-user-select: none;
+}
+
+.other .comments .comment .c-like {
+  width: 17px;
+}
+
+.other .comments .comment .contributor {
+  display: flex;
+  align-items: center;
+}
+
+.other .comments .comment .contributor p {
+  margin-left: 0.5rem;
+}
+
+.other .comments .comment .c-content {
+  margin-left: 56px;
+}
+
+.other .comments .comment .comment-info {
+  margin-top: 10px;
+  margin-left: 56px;
+  display: flex;
+  align-items: center;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  -webkit-user-drag: none;
+  -moz-user-select: none;
+}
+
+.other .comments .comment .reply {
+  margin-top: 5px;
+  margin-left: 56px;
+  text-decoration: underline;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  -moz-user-select: none;
+}
+
+.other .comments .comment .c-heart-icon {
+  width: 20px;
+  height: 20px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-left: 0.5rem;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  -webkit-user-drag: none;
+  -moz-user-select: none;
+  position: relative;
+  border: 1px solid #bbbbbb;
+}
+
+.other .comments .comment .c-heart {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  margin-top: 12px;
+  margin-left: -12px;
+  z-index: 1;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  -webkit-user-drag: none;
+  -moz-user-select: none;
+}
+
+#video-content {
+  display: none;
+}
+
+#load-anim {
+  height: calc(100vh - 60px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.other .comments .recommended {
+  width: 30%;
+  min-height: 30%;
+}
+
+.other .r-video {
+  cursor: pointer;
+  overflow-wrap: break-all;
+  background-color: #ffffff;
+  border-radius: 8px;
+  width: 340px;
+  border: 1px solid #dfdfdf;
+  margin-top: 1rem;
+  transition: all;
+  transition-duration: 0.2s;
+}
+
+.other .r-video:hover {
+  background-color: #dfdfdf;
+}
+
+.other .r-video .v-Thumbnail {
+  display: flex;
+  margin-top: 10px;
+  margin-left: 10px;
+  border-radius: 8px;
+  height: 180px;
+  width: auto;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  -webkit-user-drag: none;
+  -moz-user-select: none;
+}
+
+.other .r-video .verified {
+  width: 16px;
+  height: 16px;
+  margin-left: 5px;
+  margin-top: 0.4rem;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  -webkit-user-drag: none;
+  -moz-user-select: none;
+}
+
+.other .r-video p {
+  font-size: 18px;
+  margin-left: 1rem;
+  margin-bottom: 1em;
+}
+
+.other .r-video .v-name {
+  display: flex;
+  margin-top: 0.5rem;
+}
+
+.other .r-video .v-title {
+  width: calc(100% - 1.4rem);
+  overflow-wrap: break-all;
+}
+
+.other .r-video .video-data {
+  flex-grow: 1;
+}

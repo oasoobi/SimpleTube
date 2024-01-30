@@ -4,414 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>SimpleTube</title>
-    <!-- <link rel="stylesheet" href="../../styles/top"> -->
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400&display=swap');
-
-        * {
-            padding: 0;
-            margin: 0;
-            font-family: 'Noto Sans JP', sans-serif;
-        }
-
-        header {
-            background: rgba(255, 255, 255, 0.84);
-            border-radius: 16px;
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-            backdrop-filter: blur(8.3px);
-            -webkit-backdrop-filter: blur(8.3px);
-            height: 60px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            color: rgb(0, 0, 0);
-            font-size: 10px;
-
-            h1 {
-                margin-left: 20px;
-            }
-
-            a {
-                text-decoration: none;
-                color: #000000;
-            }
-
-            input {
-                border: none;
-                font-size: 16px;
-                width: 2rem;
-                height: 2rem;
-                border-radius: 5px;
-                padding-left: 2rem;
-                background: no-repeat left .5em center / 1em url("../icons/search");
-                cursor: pointer;
-                transition: width 0.2s, margin 0.2s;
-                margin-right: 5px;
-
-                &:hover {
-                    background-color: #dfdfdf;
-                }
-
-                &:focus {
-                    width: 10rem;
-                    margin-left: 0;
-                    outline: 1px #000000;
-                    border: 1px solid #b3b3b3;
-                    cursor: text;
-                    background-color: white;
-                }
-            }
-
-            .buttons {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                margin-right: 5rem;
-            }
-
-            a {
-                background-color: #ffffff;
-                min-width: 2rem;
-                min-height: 2rem;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                cursor: pointer;
-
-                &:hover {
-                    border-radius: 5px;
-                    background-color: #dfdfdf;
-                }
-            }
-
-            h1 {
-                padding-left: 2px;
-                padding-right: 2px;
-                min-width: 140px;
-            }
-
-            img {
-                width: 17px;
-            }
-        }
-
-        body {
-            background-color: rgb(255, 255, 255)
-        }
-
-        main {
-            text-align: center;
-        }
-
-        img {
-            width: 70%;
-        }
-
-
-
-        .watch {
-            margin-top: 1rem;
-
-            .video {
-                margin-left: 10%;
-                margin-right: 10%;
-                width: 80%;
-                border: 1px solid #dfdfdf;
-                margin-bottom: .5rem;
-                border-radius: 8px;
-
-                img {
-                    -webkit-user-select: none;
-                    -moz-user-select: none;
-                    user-select: none;
-                    -webkit-user-drag: none;
-                    -moz-user-select: none;
-                    margin-left: 2.5%;
-                    margin-right: 2.5%;
-                    width: 95%;
-                    padding-top: 2.5%;
-                    padding-bottom: 1.5%;
-                    border: none;
-                    border-radius: 0;
-                }
-            }
-
-            .video-info {
-                margin-left: 10%;
-                margin-right: 10%;
-                margin-top: 1rem;
-                width: 80%;
-                background: #ffffff;
-
-                img {
-                    width: 16px;
-                    height: 16px;
-                }
-
-                .statistics {
-                    display: flex;
-                    margin-left: 0.5rem;
-                    align-items: center;
-                    margin-top: 0.5em;
-
-                    img {
-                        margin-left: 5px;
-                        margin-right: 1px;
-                        -webkit-user-select: none;
-                        -moz-user-select: none;
-                        user-select: none;
-                        -webkit-user-drag: none;
-                        -moz-user-select: none;
-                    }
-
-                    p {
-                        margin-right: 5px;
-                    }
-
-                }
-
-                pre {
-                    border-radius: 8px;
-                    margin-top: 1.5rem;
-                    padding-top: 0.5rem;
-                    padding-left: 0.5rem;
-                    border: 1px solid #dfdfdf;
-                    text-align: left;
-                    white-space: pre-line;
-                    padding-bottom: 1rem;
-                }
-
-
-                .icon {
-                    width: 32px;
-                    height: 32px;
-                    object-fit: cover;
-                    border-radius: 50%;
-                    margin-top: 5px;
-                    margin-left: 0.5rem;
-                    -webkit-user-select: none;
-                    -moz-user-select: none;
-                    user-select: none;
-                    -webkit-user-drag: none;
-                    -moz-user-select: none;
-                }
-
-                .title {
-                    text-align: left;
-                    margin-top: 0.5rem;
-                    margin-left: 0.5rem;
-                }
-            }
-
-            .channel-info {
-                margin-top: 1rem;
-                height: 50px;
-                background: #ffffff;
-                border: #dfdfdf solid 1px;
-                align-items: center;
-                justify-content: left;
-                display: flex;
-                border-radius: 8px;
-                justify-content: space-between;
-                display: flex;
-
-                img {
-                    justify-content: none;
-                    margin-right: 5px;
-                    border: 1px solid #bbbbbb;
-                    -webkit-user-select: none;
-                    -moz-user-select: none;
-                    user-select: none;
-                    -webkit-user-drag: none;
-                    -moz-user-select: none;
-                }
-
-                p {
-                    margin-right: 5px;
-                }
-
-                .channel {
-                    display: flex;
-                    align-items: center;
-                }
-
-                .verified {
-                    border: none;
-                    width: 16px;
-                    height: 16px;
-                    -webkit-user-select: none;
-                    -moz-user-select: none;
-                    user-select: none;
-                    -webkit-user-drag: none;
-                    -moz-user-select: none;
-                }
-
-                button {
-                    -webkit-user-select: none;
-                    user-select: none;
-                    height: 35px;
-                    width: 120px;
-                    border: none;
-                    background: none;
-                    border-radius: 5px;
-                    cursor: pointer;
-                    transition: all;
-                    transition-duration: 0.2s;
-                    margin-right: 0.5rem;
-
-                    &:hover {
-                        background: #dfdfdf;
-                    }
-                }
-            }
-        }
-
-        .other {
-            margin-left: 10%;
-            margin-right: 10%;
-            margin-top: 1rem;
-            display: flex;
-            width: 80%;
-            height: 50%;
-
-            .comments {
-                width: 50%;
-                min-height: 50%;
-
-                .comment {
-                    position: relative;
-
-                    .c-icon {
-                        width: 40px;
-                        height: 40px;
-                        object-fit: cover;
-                        border-radius: 50%;
-                        margin-top: 5px;
-                        margin-left: 0.5rem;
-                        -webkit-user-select: none;
-                        -moz-user-select: none;
-                        user-select: none;
-                        -webkit-user-drag: none;
-                        -moz-user-select: none;
-                    }
-
-                    .c-verified {
-                        width: 16px;
-                        height: 16px;
-                        margin-left: 5px;
-                        margin-top: 1rem;
-                        -webkit-user-select: none;
-                        -moz-user-select: none;
-                        user-select: none;
-                        -webkit-user-drag: none;
-                        -moz-user-select: none;
-                    }
-
-                    .c-like {
-                        width: 17px;
-                    }
-                }
-
-                .recommended {
-                    width: 50%;
-                    min-height: 50%;
-                }
-            }
-
-            .r-video {
-                cursor: pointer;
-                overflow-wrap: break-all;
-                display: flex;
-                background-color: #ffffff;
-                border-radius: 8px;
-                width: 100%;
-                height: 200px;
-                border: 1px solid #dfdfdf;
-                margin-top: 1rem;
-                transition: all;
-                transition-duration: 0.2s;
-
-                &:hover {
-                    background-color: #dfdfdf;
-                }
-
-                .v-Thumbnail {
-                    display: flex;
-                    margin-top: 10px;
-                    margin-left: 10px;
-                    border-radius: 8px;
-                    height: 180px;
-                    width: auto;
-                    -webkit-user-select: none;
-                    -moz-user-select: none;
-                    user-select: none;
-                    -webkit-user-drag: none;
-                    -moz-user-select: none;
-                }
-
-                .verified {
-                    width: 16px;
-                    height: 16px;
-                    margin-left: 5px;
-                    margin-top: 1rem;
-                    -webkit-user-select: none;
-                    -moz-user-select: none;
-                    user-select: none;
-                    -webkit-user-drag: none;
-                    -moz-user-select: none;
-                }
-
-                p {
-                    margin-top: 0.6rem;
-                    font-size: 18px;
-                    margin-left: 1rem;
-                }
-
-                .v-name {
-                    display: flex;
-                    margin-top: 1.5rem;
-                }
-
-                .v-title {
-                    width: calc(100% - 2rem);
-                    overflow-wrap: break-all;
-                }
-
-                .video-data {
-                    flex-grow: 1;
-                }
-
-            }
-        }
-
-        .c-love {
-            width: 20px;
-            height: 20px;
-            object-fit: cover;
-            border-radius: 50%;
-            margin-top: 5px;
-            margin-left: 0.5rem;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            user-select: none;
-            -webkit-user-drag: none;
-            -moz-user-select: none;
-            position: relative;
-            border: 1px solid #bbbbbb;
-
-            &::after {
-                content: url(../../../icons/heart);
-                display: inline-block;
-                position: absolute;
-                width: 2px;
-                height: 2px;
-                margin-top: 18px;
-                margin-left: -12px;
-                transform: scale(0.6);
-                z-index: 1;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="../../styles/watch">
 </head>
 
 <body>
@@ -422,101 +15,92 @@
             <a href="settings"><img src="../icons/settings" alt="settings"></a>
         </div>
     </header>
-    <main>
-        <div class="watch">
-            <div class="video">
-                <img src="https://yt.artemislena.eu/vi/n67Gh4OxpWA/maxres.jpg" alt="Thumbnail" class="video">
-            </div>
-            <div class="video-info">
-                <div>
-                    <p class="title">ブルーアーカイブ Blue Archive OST 152. Aoharu Band Arrange</p>
+    <div id="load-anim">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="48" height="48">
+            <circle cx="12" cy="12" r="10" fill="none" stroke="#2589d0" stroke-width="2" stroke-dasharray="63"
+                stroke-linecap="round">
+                <animate attributeName="stroke-dashoffset" values="63;16;63" keyTimes="0;.5;1"
+                    keySplines=".42 0 .58 1;.42 0 .58 1;" calcMode="spline" dur="1.4s" repeatCount="indefinite" />
+                <animateTransform attributeName="transform" type="rotate" values="0,12,12;135,12,12;450,12,12"
+                    keySplines=".42 0 .58 1;.42 0 .58 1;" calcMode="spline" dur="1.4s" repeatCount="indefinite" />
+                <animateTransform attributeName="transform" type="rotate" from="0,12,12" to="270,12,12"
+                    calcMode="linear" dur="1.4s" repeatCount="indefinite" additive="sum" />
+            </circle>
+        </svg>
+    </div>
+    <div id="video-content">
+        <main>
+            <div class="watch">
+                <div class="video">
+                    <img src="" alt="Thumbnail" id="video-thumbnail" onload="thumbnailLoaded()">
                 </div>
-
-                <div class="statistics">
-                    <p>996733 回視聴</p>
-                    <p>10か月前</p>
-                    <img src="../../icons/good" alt="good: ">
-                    <p>14701</p>
-                </div>
-                <div class="channel-info">
-                    <div class="channel">
-                        <img src="https://yt3.ggpht.com/ytc/AIf8zZSHEu8sdjtDy416MkSkMWKW7OEqrrXh3YYEZmEU=s32-c-k-c0x00ffffff-no-rj"
-                            alt="MO2" class="icon">
-                        <p>MO2</p>
-                        <img src="../../icons/verified" alt="verified" class="verified">
-                        <p>登録者数 85.6k 人</p>
+                <div class="video-info">
+                    <div>
+                        <p class="title" id="video-title"></p>
                     </div>
-                    <button type="button">チャンネルを見る</button>
-                </div>
-                <div class="desc">
-                    <pre>
-                        Composer: Mitsukiyo (Twitter: https://twitter.com/mitsukiyo_5)
-                        Electronic Guitar by: NezMayo (https://twitter.com/nezmayoi), JuNN (https://twitter.com/JuNN_guitar)
-                        
-                        Released as Track 13, Disc 2 of OST album Vol. 4
-                        
-                        Blue Archive Official Website (JP): https://bluearchive.jp/
-                        Blue Archive Official Website (Global): https://bluearchive.nexon.com/
-                        
-                        Stream / Download the albums here -
-                        Vol 1: https://nex-tone.link/A00094941
-                        Vol 2: https://nex-tone.link/A00102108
-                        Vol 3: https://nex-tone.link/A00111577
-                        Vol 4: https://nex-tone.link/A00120144
-                        
-                        Blue Archive is an RPG mobile title developed by NAT Games and published by Yostar in Japan and by Nexon globally. The player will be a teacher that leads their students into various incidents around the city.
-                        This video is solely intended for promoting and education purposes and have no means of monetization. This channel is not affiliated with NAT Games, Yostar or Nexon in any ways.
-                        #ブルーアーカイブ #BlueArchive #OST #블루아카이브 #蔚藍檔案
-                    </pre>
-                </div>
-            </div>
-    </main>
-    <div class="other">
-        <!-- コメントと関連動画 -->
-        <div class="comments">
-            <h2>コメント</h2>
-            <noscript>
-                <p>コメントを読み込むにはjsを有効にしてください。</p>
-            </noscript>
-            <div id="" class="comment">
-                <div class="contributor"></div>
-                <img src="https://yt3.ggpht.com/yUgY7hr-wwpXEHUDj1eVN0MFHvQ79Ffp2D2K0wwMFrF7AdpWcuX0zpAFO8vWYmeeF-AnpTWPfQ=s48-c-k-c0x00ffffff-no-rj"
-                    alt="icon" class="c-icon">
-                <p>@JuNNguitar</p>
-                <img src="../../icons/verified" alt="verified" class="c-verified">
-                <p>(編集済み)</p>
-                <p>いつもお世話になっていたチャンネルでNezMayoと僕が演奏した曲を聞くことになるとは思いませんでした。本当にありがとうブルアカ<br>항상 신세지고 있는 채널에서 네즈마요와 제가 연주한 곡을
-                    듣게 될줄은 꿈에도 몰랐습니다. 정말 감사합니다<br>I never thought I&#39;d hear a song recorded by Nezmayo and I on
-                    guitar on this channel. thank you soooo much.</p>
-                <img src="../../icons/good" alt="good: " class="c-like">
-                <p>1672</p>
-                <div>
-                    <img src="https://yt3.ggpht.com/ytc/AIf8zZSHEu8sdjtDy416MkSkMWKW7OEqrrXh3YYEZmEU=s176-c-k-c0x00ffffff-no-rj"
-                        alt="icon" class="c-love">
 
-                </div>
-                <p>23 件の返信を表示</p>
-
-            </div>
-        </div>
-        <div class="recommended">
-            <h2>関連動画</h2>
-            <div class="r-video">
-                <img src="https://yt.artemislena.eu/vi/lgq0OdRIEao/mqdefault.jpg" alt="Thumbnail" class="v-Thumbnail">
-                <div class="video-data">
-                    <p class="v-title">ブルーアーカイブ Blue Archive OST 59. RE Aoharu</p>
-                    <div class="v-name">
-                        <p>MO2</p>
-                        <img src="../../icons/verified" alt="verified" class="verified">
+                    <div class="statistics">
+                        <p id="view-count"></p>
+                        <p id="release-date"></p>
+                        <img src="../../icons/good" alt="good: ">
+                        <p id="like-count"></p>
                     </div>
-                    <p>3399816 回視聴</p>
+                    <div class="channel-info">
+                        <div class="channel">
+                            <img src="" alt="" class="icon" id="author-icon">
+                            <p id="author"></p>
+                            <img src="../../icons/verified" alt="verified" class="verified">
+                            <p id="subCountText"></p>
+                        </div>
+                        <button type="button" onclick="channelbtn()">チャンネルを見る</button>
+                    </div>
+                    <pre class="desc" id="desc">
+                </pre>
                 </div>
-                </li>
+        </main>
+        <div class="other">
+            <!-- コメントと関連動画 -->
+            <div class="comments">
+                <h2>コメント</h2>
+                <noscript>
+                    <p>コメントを読み込むにはjsを有効にしてください。</p>
+                </noscript>
+                <div id="" class="comment">
+                    <div class="contributor">
+                        <img src="https://yt3.ggpht.com/yUgY7hr-wwpXEHUDj1eVN0MFHvQ79Ffp2D2K0wwMFrF7AdpWcuX0zpAFO8vWYmeeF-AnpTWPfQ=s48-c-k-c0x00ffffff-no-rj"
+                            alt="icon" class="c-icon">
+                        <p>@JuNNguitar</p>
+                        <img src="../../icons/verified" alt="verified" class="c-verified">
+                        <p class="edit-msg">(編集済み)</p>
+                    </div>
+                    <p class="c-content">いつもお世話になっていたチャンネルでNezMayoと僕が演奏した曲を聞くことになるとは思いませんでした。本当にありがとうブルアカ<br>항상 신세지고 있는
+                        채널에서
+                        네즈마요와 제가 연주한
+                        곡을
+                        듣게 될줄은 꿈에도 몰랐습니다. 정말 감사합니다<br>I never thought I&#39;d hear a song recorded by Nezmayo and I on
+                        guitar on this channel. thank you soooo much.</p>
+                    <div class="comment-info">
+                        <img src="../../icons/good" alt="good: " class="c-like">
+                        <p>1672</p>
+                        <div>
+                            <img src="https://yt3.ggpht.com/ytc/AIf8zZSHEu8sdjtDy416MkSkMWKW7OEqrrXh3YYEZmEU=s176-c-k-c0x00ffffff-no-rj"
+                                alt="icon" class="c-heart-icon">
+                            <img src="../../icons/heart" alt="heart" class="c-heart">
+                        </div>
+                    </div>
+                    <p class="reply">23 件の返信を表示</p>
+                </div>
+            </div>
+            <div class="recommended" id="recommended">
+                <h2>関連動画</h2>
+
             </div>
         </div>
     </div>
 </body>
 <script>
+    const circle = document.querySelector('circle');
+    circle.style.animationPlayState = 'running';
     //header検索
     const headerSearch = document.getElementById("headerSearch");
     headerSearch.addEventListener("keydown", function () {
@@ -524,6 +108,118 @@
             window.location.href = "../search/" + headerSearch.value.replace(/ /g, "+");
         }
     })
+    function videoTemplete(v) {
+        const templete = `<div class="r-video">
+            <img src="../../api/image?id=${v.videoId}" alt="Thumbnail" class="v-Thumbnail">
+                <div class="video-data">
+                    <p class="v-title">${v.title}</p>
+                    <div class="v-name">
+                        <p>${v.author}</p>
+                    </div>
+                    <p>${v.viewCount} 回視聴</p>
+                </div>
+        </div>`
+        return templete;
+    }
+
+    function commentTemplate(data) {
+        const templete = `<div id="${}" class="comment">
+                    <div class="contributor">
+                        <img src="https://yt3.ggpht.com/yUgY7hr-wwpXEHUDj1eVN0MFHvQ79Ffp2D2K0wwMFrF7AdpWcuX0zpAFO8vWYmeeF-AnpTWPfQ=s48-c-k-c0x00ffffff-no-rj"
+                            alt="icon" class="c-icon">
+                        <p>@JuNNguitar</p>
+                        <img src="../../icons/verified" alt="verified" class="c-verified">
+                        <p class="edit-msg">(編集済み)</p>
+                    </div>
+                    <p class="c-content">いつもお世話になっていたチャンネルでNezMayoと僕が演奏した曲を聞くことになるとは思いませんでした。本当にありがとうブルアカ<br>항상 신세지고 있는
+                        채널에서
+                        네즈마요와 제가 연주한
+                        곡을
+                        듣게 될줄은 꿈에도 몰랐습니다. 정말 감사합니다<br>I never thought I&#39;d hear a song recorded by Nezmayo and I on
+                        guitar on this channel. thank you soooo much.</p>
+                    <div class="comment-info">
+                        <img src="../../icons/good" alt="good: " class="c-like">
+                        <p>1672</p>
+                        <div>
+                            <img src="https://yt3.ggpht.com/ytc/AIf8zZSHEu8sdjtDy416MkSkMWKW7OEqrrXh3YYEZmEU=s176-c-k-c0x00ffffff-no-rj"
+                                alt="icon" class="c-heart-icon">
+                            <img src="../../icons/heart" alt="heart" class="c-heart">
+                        </div>
+                    </div>
+                    <p class="reply">23 件の返信を表示</p>`
+        return templete;
+    }
+
+    const videoDatas = {
+        title: document.getElementById("video-title"),
+        viewCount: document.getElementById("view-count"),
+        releaseDate: document.getElementById("release-date"),
+        likeCount: document.getElementById("like-count"),
+        author: document.getElementById("author"),
+        subCountText: document.getElementById("subCountText"),
+        authorIcon: document.getElementById("author-icon"),
+        desc: document.getElementById("desc"),
+        recommendedVideos: document.getElementById("recommended"),
+        videoContent: document.getElementById("video-content"),
+        loadAnim: document.getElementById("load-anim"),
+        videoThumbnail: document.getElementById("video-thumbnail"),
+        comments: document.getElementById("comments")
+    }
+
+
+
+    let data;
+    let commentData;
+    const videoId = "<%- videoId %>";
+    setData();
+    setComment();
+
+    async function setComment() {
+        try {
+            const response = await fetch("../../api/videos/" + videoId + "/comments");
+            const commentData = await response.json();
+            
+        } catch (error) {
+            console.error("エラーが発生しました。", error);
+        }
+    }
+    async function setData() {
+        try {
+            const response = await fetch("../../api/videos/" + videoId);
+            const videoData = await response.json();
+            data = videoData;
+            videoDatas.title.textContent = videoData.title;
+            videoDatas.viewCount.textContent = videoData.viewCount + " 回視聴";
+            videoDatas.likeCount.textContent = videoData.likeCount;
+            videoDatas.releaseDate.textContent = videoData.publishedText;
+            videoDatas.author.textContent = videoData.author;
+            videoDatas.subCountText.textContent = "登録者数 " + videoData.subCountText + " 人";
+            videoDatas.authorIcon.src = videoData.authorThumbnails[0].url;
+            videoDatas.authorIcon.alt = videoData.author;
+            videoDatas.desc.textContent = videoData.description;
+            videoDatas.videoThumbnail.src = `../../api/image?id=${videoId}&q=max`;
+
+            videoData.recommendedVideos.forEach(v => {
+                videoDatas.recommendedVideos.insertAdjacentHTML("beforeend", videoTemplete(v));
+                const last = Array.from(videoDatas.recommendedVideos.children);
+                last[last.length - 1].addEventListener("click", () => {
+                    window.location.href = "../watch/" + v.videoId;
+                })
+            });
+
+        } catch (error) {
+            console.error("エラーが発生しました。", error);
+        }
+    }
+
+    function channelbtn() {
+        window.location.href = ".." + data.authorUrl;
+    }
+
+    function thumbnailLoaded() {
+        videoDatas.videoContent.style.display = "block";
+        videoDatas.loadAnim.style.display = "none";
+    }
 </script>
 
 </html>

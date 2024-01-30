@@ -24,7 +24,7 @@ api/videos/[videoId]
 /api/videos/[videoId]/comments
 ### コメントの返信を取得
 /api/videos/[videoId]/comments/[continuation]
-## 忘備録
+# 忘備録
 ### 返信の取得方法
 yourinstance/api/v1/comments/[videoId]?hl=ja&thin_mode=false&continuation=[continuation]action=action_get_comment_replies
 continuationはコメントapiから取得可能。

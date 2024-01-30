@@ -31,7 +31,16 @@ router.get("/search/:q/:page?", async (req, res) => {
 router.get('/image', async (req, res) => {
   try {
     const vid = req.query.id;
-    const apiUrl = `https://yt.artemislena.eu/vi/${vid}/mqdefault.jpg`;
+    const quarity = req.query.q; //bool
+    let apiUrl;
+    if (quarity) {
+      if (quarity == "max") {
+        apiUrl = `https://yt.artemislena.eu/vi/${vid}/maxres.jpg`;
+      }
+    } else {
+      apiUrl = `https://yt.artemislena.eu/vi/${vid}/mqdefault.jpg`;
+    }
+    console.log(quarity);
     const response = await axios.get(apiUrl, { responseType: 'arraybuffer' });
     res.setHeader('Content-Type', 'image/jpeg');
     res.send(Buffer.from(response.data));

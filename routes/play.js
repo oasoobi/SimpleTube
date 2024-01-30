@@ -6,7 +6,7 @@ const instance = [
 ]
 router.get("/:vid", async (req, res) => {
     const vid = req.params.vid;
-    res.render("watch", {apiUrl : `/api/videos/${vid}`});
+    res.render("watch", {videoId : `${vid}`});
 })
 
 module.exports = router;
