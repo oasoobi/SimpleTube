@@ -11,7 +11,7 @@
 ![TOP](https://i.imgur.com/Kygar7S.png)
 ![Search](https://i.imgur.com/5aGVPut.png)
 
-## API Memo
+# API Memo
 ## 検索候補を取得
 /api/suggest?q=[keyword]
 ## 検索結果を取得
