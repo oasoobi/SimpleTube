@@ -54,42 +54,16 @@
                         </div>
                         <button type="button" onclick="channelbtn()">チャンネルを見る</button>
                     </div>
-                    <pre class="desc" id="desc">
-                </pre>
+                    <pre class="desc" id="desc"></pre>
                 </div>
         </main>
         <div class="other">
             <!-- コメントと関連動画 -->
-            <div class="comments">
+            <div class="comments" id="comments">
                 <h2>コメント</h2>
                 <noscript>
                     <p>コメントを読み込むにはjsを有効にしてください。</p>
                 </noscript>
-                <div id="" class="comment">
-                    <div class="contributor">
-                        <img src="https://yt3.ggpht.com/yUgY7hr-wwpXEHUDj1eVN0MFHvQ79Ffp2D2K0wwMFrF7AdpWcuX0zpAFO8vWYmeeF-AnpTWPfQ=s48-c-k-c0x00ffffff-no-rj"
-                            alt="icon" class="c-icon">
-                        <p>@JuNNguitar</p>
-                        <img src="../../icons/verified" alt="verified" class="c-verified">
-                        <p class="edit-msg">(編集済み)</p>
-                    </div>
-                    <p class="c-content">いつもお世話になっていたチャンネルでNezMayoと僕が演奏した曲を聞くことになるとは思いませんでした。本当にありがとうブルアカ<br>항상 신세지고 있는
-                        채널에서
-                        네즈마요와 제가 연주한
-                        곡을
-                        듣게 될줄은 꿈에도 몰랐습니다. 정말 감사합니다<br>I never thought I&#39;d hear a song recorded by Nezmayo and I on
-                        guitar on this channel. thank you soooo much.</p>
-                    <div class="comment-info">
-                        <img src="../../icons/good" alt="good: " class="c-like">
-                        <p>1672</p>
-                        <div>
-                            <img src="https://yt3.ggpht.com/ytc/AIf8zZSHEu8sdjtDy416MkSkMWKW7OEqrrXh3YYEZmEU=s176-c-k-c0x00ffffff-no-rj"
-                                alt="icon" class="c-heart-icon">
-                            <img src="../../icons/heart" alt="heart" class="c-heart">
-                        </div>
-                    </div>
-                    <p class="reply">23 件の返信を表示</p>
-                </div>
             </div>
             <div class="recommended" id="recommended">
                 <h2>関連動画</h2>
@@ -123,30 +97,27 @@
     }
 
     function commentTemplate(data) {
-        const templete = `<div id="${}" class="comment">
+        console.log(data);
+        const templete = `<div ${data.replies == undefined ? "" : "id=" + data.replies.continuation} class="comment">
                     <div class="contributor">
-                        <img src="https://yt3.ggpht.com/yUgY7hr-wwpXEHUDj1eVN0MFHvQ79Ffp2D2K0wwMFrF7AdpWcuX0zpAFO8vWYmeeF-AnpTWPfQ=s48-c-k-c0x00ffffff-no-rj"
+                        <img src="${data.authorThumbnails[0].url}"
                             alt="icon" class="c-icon">
-                        <p>@JuNNguitar</p>
-                        <img src="../../icons/verified" alt="verified" class="c-verified">
-                        <p class="edit-msg">(編集済み)</p>
+                        <a src=".. ${data.authorUrl}">${data.author}</a>
+                        <img src="../../icons/verified" alt="verified" class="c-verified" style="${data.verified ? "display: block;" : "display: none;"}">
+                        <img src="../../icons/pin" alt="verified" class="c-verified" style="${data.isPinned ? "display: block;" : "display: none;"}">
+                        <p class="edit-msg" style="${data.isEdited ? "display: block;" : "display: none;"}">(編集済み)</p>
+                        <p>${data.publishedText}</p>
                     </div>
-                    <p class="c-content">いつもお世話になっていたチャンネルでNezMayoと僕が演奏した曲を聞くことになるとは思いませんでした。本当にありがとうブルアカ<br>항상 신세지고 있는
-                        채널에서
-                        네즈마요와 제가 연주한
-                        곡을
-                        듣게 될줄은 꿈에도 몰랐습니다. 정말 감사합니다<br>I never thought I&#39;d hear a song recorded by Nezmayo and I on
-                        guitar on this channel. thank you soooo much.</p>
+                    <p class="c-content">${data.contentHtml}</p>
                     <div class="comment-info">
                         <img src="../../icons/good" alt="good: " class="c-like">
-                        <p>1672</p>
-                        <div>
-                            <img src="https://yt3.ggpht.com/ytc/AIf8zZSHEu8sdjtDy416MkSkMWKW7OEqrrXh3YYEZmEU=s176-c-k-c0x00ffffff-no-rj"
-                                alt="icon" class="c-heart-icon">
-                            <img src="../../icons/heart" alt="heart" class="c-heart">
-                        </div>
+                        <p>${data.likeCount}</p>
+                            <img src="${data.creatorHeart == undefined ? "" : data.creatorHeart.creatorThumbnail}"
+                                alt="icon" class="c-heart-icon" style="display: ${data.creatorHeart == undefined ? "none" : "block"}">
+                            <img src="../../icons/heart" alt="heart" class="c-heart" style="${data.creatorHeart == undefined ? 'display: none";' : 'display: flex;"'}>
                     </div>
-                    <p class="reply">23 件の返信を表示</p>`
+                    <p class="reply" style="display: ${data.replies == undefined ? "none" : "block" }">${data.replies == undefined ? 0 : data.replies.replyCount} 件の返信を表示</p></div>`
+                    console.log(templete)
         return templete;
     }
 
@@ -178,7 +149,9 @@
         try {
             const response = await fetch("../../api/videos/" + videoId + "/comments");
             const commentData = await response.json();
-            
+            commentData.comments.forEach((comment, index) => {
+                videoDatas.comments.insertAdjacentHTML("beforeend", commentTemplate(comment));
+            })
         } catch (error) {
             console.error("エラーが発生しました。", error);
         }
@@ -196,9 +169,17 @@
             videoDatas.subCountText.textContent = "登録者数 " + videoData.subCountText + " 人";
             videoDatas.authorIcon.src = videoData.authorThumbnails[0].url;
             videoDatas.authorIcon.alt = videoData.author;
-            videoDatas.desc.textContent = videoData.description;
+            if (videoData.description == "") {
+                videoDatas.desc.style.display = "none";
+            } else {
+                videoDatas.desc.textContent = videoData.description;
+            }
             videoDatas.videoThumbnail.src = `../../api/image?id=${videoId}&q=max`;
-
+            console.log(videoData)
+            if (videoData.recommendedVideos.length < 1) {
+                videoDatas.recommendedVideos.style.display = "none";
+                videoDatas.comments.style.width = "100%";
+            }
             videoData.recommendedVideos.forEach(v => {
                 videoDatas.recommendedVideos.insertAdjacentHTML("beforeend", videoTemplete(v));
                 const last = Array.from(videoDatas.recommendedVideos.children);
