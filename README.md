@@ -29,4 +29,7 @@ api/videos/[videoId]
 yourinstance/api/v1/comments/[videoId]?hl=ja&thin_mode=false&continuation=[continuation]action=action_get_comment_replies
 continuationはコメントapiから取得可能。
 
+
 format=htmlをつけるとhtmlとして取得可能
+
+https://lopan.jp/memorandum/loading-circle/
