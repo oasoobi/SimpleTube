@@ -31,7 +31,7 @@ router.get("/search/:q/:page?", async (req, res) => {
 router.get('/image', async (req, res) => {
   try {
     const vid = req.query.id;
-    const quarity = req.query.q; //bool
+    const quarity = req.query.q;
     let apiUrl;
     if (quarity) {
       if (quarity == "max") {
@@ -53,12 +53,12 @@ router.get('/image', async (req, res) => {
 router.get("/videos/:id/comments", async (req, res) => {
   try {
     const vid = req.params.id;
-    const apiUrl = `https://yt.artemislena.eu/api/v1/comments/${vid}`;
+    const apiUrl = `https://yt.artemislena.eu/api/v1/comments/${vid}?hl=ja`;
     const response = await axios.get(apiUrl);
     const data = await response.data;
     res.json(data);
   } catch (error) {
-    console.error("Error: ", error); 7
+    console.error("Error: ", error);
     res.status(500).send("Internal Server Error");
   }
 

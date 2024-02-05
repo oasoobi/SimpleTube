@@ -67,7 +67,6 @@
             </div>
             <div class="recommended" id="recommended">
                 <h2>関連動画</h2>
-
             </div>
         </div>
     </div>
@@ -96,9 +95,9 @@
         return templete;
     }
 
-    function commentTemplate(data) {
+    function commentTemplate(data, isReply, isLast) {
         console.log(data);
-        const templete = `<div ${data.replies == undefined ? "" : "id=" + data.replies.continuation} class="comment">
+        const templete = `<div ${data.replies == undefined ? "" : "id=" + data.replies.continuation} class="comment" style="${isReply ? "margin-left: 45px" : "margin-left: 0px"}">
                     <div class="contributor">
                         <img src="${data.authorThumbnails[0].url}"
                             alt="icon" class="c-icon">
@@ -112,12 +111,15 @@
                     <div class="comment-info">
                         <img src="../../icons/good" alt="good: " class="c-like">
                         <p>${data.likeCount}</p>
+                        <div class="creator-heart">
                             <img src="${data.creatorHeart == undefined ? "" : data.creatorHeart.creatorThumbnail}"
                                 alt="icon" class="c-heart-icon" style="display: ${data.creatorHeart == undefined ? "none" : "block"}">
                             <img src="../../icons/heart" alt="heart" class="c-heart" style="${data.creatorHeart == undefined ? 'display: none";' : 'display: flex;"'}>
+                        </div>
                     </div>
-                    <p class="reply" style="display: ${data.replies == undefined ? "none" : "block" }">${data.replies == undefined ? 0 : data.replies.replyCount} 件の返信を表示</p></div>`
-                    console.log(templete)
+                    <p class="reply" style="display: ${data.replies == undefined ? "none" : "block" }" id="${data.commentId}" onclick="loadReply('${data.replies == undefined ? "" : data.replies.continuation}', '${data.commentId}')">${data.replies == undefined ? 0 : data.replies.replyCount} 件の返信を表示</p></div>
+                    <button type="button" style="display=${isLast ? "block" : "none"}">コメントをさらに読み込む<button>`
+                    console.log(templete);
         return templete;
     }
 
@@ -137,7 +139,17 @@
         comments: document.getElementById("comments")
     }
 
-
+    async function loadReply(continuation, commentId) {
+        try {
+        const response = await fetch("../../api/videos/" + videoId + "/comments/" + continuation);
+        const commentData = await response.json();
+        document.getElementById(commentId).style.display = "none";
+        commentData.comments.forEach((comment, index) => {
+            document.getElementById(continuation).insertAdjacentHTML("beforeend", commentTemplate(comment, true));
+        })} catch (error) {
+            console.error("エラーが発生しました。", error);
+        }
+    }
 
     let data;
     let commentData;
@@ -150,7 +162,7 @@
             const response = await fetch("../../api/videos/" + videoId + "/comments");
             const commentData = await response.json();
             commentData.comments.forEach((comment, index) => {
-                videoDatas.comments.insertAdjacentHTML("beforeend", commentTemplate(comment));
+                videoDatas.comments.insertAdjacentHTML("beforeend", commentTemplate(comment, false, (commentData.comments.length == index)));
             })
         } catch (error) {
             console.error("エラーが発生しました。", error);

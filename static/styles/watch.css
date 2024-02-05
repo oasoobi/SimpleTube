@@ -278,6 +278,7 @@ img {
   width: 29px;
   height: 29px;
   border: 1px solid #bbbbbb;
+  margin-right: 0.5rem;
   object-fit: cover;
   border-radius: 50%;
   margin-top: 5px;
@@ -357,13 +358,17 @@ img {
   position: relative;
   border: 1px solid #bbbbbb;
 }
-
+.other .comments .comment .creator-heart {
+  width: 22px;
+  height: 22px;
+  position: relative;
+}
 .other .comments .comment .c-heart {
   position: absolute;
   width: 14px;
   height: 14px;
-  margin-top: 14px;
-  margin-left: 63px;
+  margin-left: 18px;
+  margin-top: -10px;
   z-index: 1;
   -webkit-user-select: none;
   -moz-user-select: none;

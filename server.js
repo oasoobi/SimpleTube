@@ -23,7 +23,6 @@ app.use((req, res, next) => {
 
     if (req.url.startsWith("/icons/")) {
         const filename = req.url.split("/")[2] + ".svg"; // icons/[file]から[file]を取得
-        console.log(filename);
         return res.sendFile(path.join(__dirname, "static/icons", filename));
     }
 
