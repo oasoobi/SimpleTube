@@ -1,4 +1,4 @@
-# Simple Youtube
+# SimpleTube
 
 日本語用です。
 
