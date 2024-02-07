@@ -1,6 +1,6 @@
 # SimpleTube
 
-日本語用です。
+クソコードかもしれませんが、許してください()
 
 ## Credit
 - [feathericons](https://feathericons.com)
