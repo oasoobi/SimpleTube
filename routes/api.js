@@ -40,7 +40,6 @@ router.get('/image', async (req, res) => {
     } else {
       apiUrl = `https://yt.artemislena.eu/vi/${vid}/mqdefault.jpg`;
     }
-    console.log(quarity);
     const response = await axios.get(apiUrl, { responseType: 'arraybuffer' });
     res.setHeader('Content-Type', 'image/jpeg');
     res.send(Buffer.from(response.data));
@@ -69,7 +68,6 @@ router.get("/videos/:id/comments/:continuation", async (req, res) => {
     const vid = req.params.id;
     const continuation = req.params.continuation;
     const apiUrl = `https://yt.artemislena.eu/api/v1/comments/${vid}?hl=ja&thin_mode=false&continuation=${continuation}&action=action_get_comment_replies`;
-    console.log(apiUrl)
     const response = await axios.get(apiUrl);
     const data = await response.data;
     res.json(data);

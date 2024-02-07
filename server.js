@@ -28,7 +28,6 @@ app.use((req, res, next) => {
 
     if (req.url.startsWith("/styles/")) {
         const filename = req.url.split("/")[2] + ".css"; // styles/[file]から[file]を取得
-        console.log(filename);
         return res.sendFile(path.join(__dirname, "static/styles", filename));
     }
     next(); // 次のミドルウェアに処理を渡す

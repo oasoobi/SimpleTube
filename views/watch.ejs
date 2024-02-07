@@ -27,12 +27,18 @@
                     calcMode="linear" dur="1.4s" repeatCount="indefinite" additive="sum" />
             </circle>
         </svg>
+        <noscript>
+            <p>JavaScriptを有効にしてください。</p>
+        </noscript>
     </div>
     <div id="video-content">
         <main>
             <div class="watch">
-                <div class="video">
+                <div class="video-thumbnail" id="video">
                     <img src="" alt="Thumbnail" id="video-thumbnail" onload="thumbnailLoaded()">
+                    <div class="playbtn">
+                        <img src="../../icons/play" alt="再生">   
+                    </div>
                 </div>
                 <div class="video-info">
                     <div>
@@ -61,9 +67,6 @@
             <!-- コメントと関連動画 -->
             <div class="comments" id="comments">
                 <h2>コメント</h2>
-                <noscript>
-                    <p>コメントを読み込むにはjsを有効にしてください。</p>
-                </noscript>
             </div>
             <div class="recommended" id="recommended">
                 <h2>関連動画</h2>
@@ -74,6 +77,13 @@
 <script>
     const circle = document.querySelector('circle');
     circle.style.animationPlayState = 'running';
+    let data;
+    let commentData;
+    let videoUrls;
+    const videoId = "<%- videoId %>";
+    setData();
+    setComment();
+
     //header検索
     const headerSearch = document.getElementById("headerSearch");
     headerSearch.addEventListener("keydown", function () {
@@ -95,10 +105,9 @@
         return templete;
     }
 
-    function commentTemplate(data, isReply, isLast) {
-        console.log(data);
+    function commentTemplate(data, isReply, isLast, continuation) {
         const templete = `<div ${data.replies == undefined ? "" : "id=" + data.replies.continuation} class="comment" style="${isReply ? "margin-left: 45px" : "margin-left: 0px"}">
-                    <div class="contributor">
+                    <div class="contributor" onclick="window.location.href = ${data.replace}">
                         <img src="${data.authorThumbnails[0].url}"
                             alt="icon" class="c-icon">
                         <a src=".. ${data.authorUrl}">${data.author}</a>
@@ -117,9 +126,8 @@
                             <img src="../../icons/heart" alt="heart" class="c-heart" style="${data.creatorHeart == undefined ? 'display: none";' : 'display: flex;"'}>
                         </div>
                     </div>
-                    <p class="reply" style="display: ${data.replies == undefined ? "none" : "block" }" id="${data.commentId}" onclick="loadReply('${data.replies == undefined ? "" : data.replies.continuation}', '${data.commentId}')">${data.replies == undefined ? 0 : data.replies.replyCount} 件の返信を表示</p></div>
-                    <button type="button" style="display=${isLast ? "block" : "none"}">コメントをさらに読み込む<button>`
-                    console.log(templete);
+                    <p class="reply" style="display: ${data.replies == undefined ? "none" : "block"}" id="${data.commentId}" onclick="loadReply('${data.replies == undefined ? "" : data.replies.continuation}', '${data.commentId}')">${data.replies == undefined ? 0 : data.replies.replyCount} 件の返信を表示</p></div>
+                    <p style="display: ${isLast && continuation != undefined ? "block" : "none"}" class="loadmore" id="${isLast ? continuation : undefined}" onclick="loadMore('${continuation}', ${isReply})">コメントをさらに読み込む</p>`
         return templete;
     }
 
@@ -136,33 +144,50 @@
         videoContent: document.getElementById("video-content"),
         loadAnim: document.getElementById("load-anim"),
         videoThumbnail: document.getElementById("video-thumbnail"),
-        comments: document.getElementById("comments")
+        comments: document.getElementById("comments"),
+        video: document.getElementById("video")
     }
 
+    videoDatas.video.addEventListener("click",playVideo());
+
+    
     async function loadReply(continuation, commentId) {
         try {
-        const response = await fetch("../../api/videos/" + videoId + "/comments/" + continuation);
-        const commentData = await response.json();
-        document.getElementById(commentId).style.display = "none";
-        commentData.comments.forEach((comment, index) => {
-            document.getElementById(continuation).insertAdjacentHTML("beforeend", commentTemplate(comment, true));
-        })} catch (error) {
-            console.error("エラーが発生しました。", error);
+            document.getElementById(commentId).style.display = "none";
+            const response = await fetch("../../api/videos/" + videoId + "/comments/" + continuation);
+            const commentData = await response.json();
+            commentData.comments.forEach((comment, index) => {
+                document.getElementById(continuation).insertAdjacentHTML("beforeend", commentTemplate(comment, true, commentData.comments.length - 1 == index, commentData.continuation));
+            })
+        } catch (error) {
+            console.log("エラーが発生しました。", error);
+            const loadbtn = document.getElementById(commentId);
+            loadbtn.textContent = "ロードに失敗しました。クリックで再試行します。";
+            loadbtn.style.display = "block";
         }
     }
-
-    let data;
-    let commentData;
-    const videoId = "<%- videoId %>";
-    setData();
-    setComment();
+    async function loadMore(continuation, isReply) {
+        try {
+            document.getElementById(continuation).style.display = "none";
+            const response = await fetch("../../api/videos/" + videoId + "/comments/" + continuation);
+            const commentData = await response.json();
+            commentData.comments.forEach((comment, index) => {
+                document.getElementById(continuation).parentNode.insertAdjacentHTML("beforeend", commentTemplate(comment, isReply, commentData.comments.length - 1 == index, commentData.continuation));
+            })
+        } catch (error) {
+            console.log("エラーが発生しました。", error);
+            const loadbtn = document.getElementById(continuation);
+            loadbtn.textContent = "ロードに失敗しました。クリックで再試行します。";
+            loadbtn.style.display = "block";
+        }
+    }
 
     async function setComment() {
         try {
             const response = await fetch("../../api/videos/" + videoId + "/comments");
             const commentData = await response.json();
             commentData.comments.forEach((comment, index) => {
-                videoDatas.comments.insertAdjacentHTML("beforeend", commentTemplate(comment, false, (commentData.comments.length == index)));
+                videoDatas.comments.insertAdjacentHTML("beforeend", commentTemplate(comment, false, commentData.comments.length - 1 == index, commentData.continuation));
             })
         } catch (error) {
             console.error("エラーが発生しました。", error);
@@ -181,13 +206,13 @@
             videoDatas.subCountText.textContent = "登録者数 " + videoData.subCountText + " 人";
             videoDatas.authorIcon.src = videoData.authorThumbnails[0].url;
             videoDatas.authorIcon.alt = videoData.author;
+            videoUrls = videoData.adaptiveFormats;
             if (videoData.description == "") {
                 videoDatas.desc.style.display = "none";
             } else {
                 videoDatas.desc.textContent = videoData.description;
             }
             videoDatas.videoThumbnail.src = `../../api/image?id=${videoId}&q=max`;
-            console.log(videoData)
             if (videoData.recommendedVideos.length < 1) {
                 videoDatas.recommendedVideos.style.display = "none";
                 videoDatas.comments.style.width = "100%";
@@ -212,6 +237,10 @@
     function thumbnailLoaded() {
         videoDatas.videoContent.style.display = "block";
         videoDatas.loadAnim.style.display = "none";
+    }
+
+    async function playVideo() {
+        const audios = videoUrls
     }
 </script>
 

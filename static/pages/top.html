@@ -80,7 +80,7 @@
                     element[0].setAttribute("href", "search/" + result[i].replace(/ /g, "+"));
                     searchCandidatesChildren[i].style.display = "block";
                 } catch (err) {
-                    console.log(i);
+                    console.error("エラーが発生しました。", err);
                 }
 
             }

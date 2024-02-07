@@ -111,6 +111,37 @@ img {
   margin-bottom: 0.5rem;
   border-radius: 8px;
 }
+.watch .video-thumbnail {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.watch #video-thumbnail {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  -webkit-user-drag: none;
+  -moz-user-select: none;
+}
+
+.watch .video-thumbnail .playbtn {
+  position: absolute;
+}
+
+.watch .video-thumbnail .playbtn img {
+  width: 60px;
+  height: 60px;
+  z-index: 1;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  -webkit-user-drag: none;
+  -moz-user-select: none;
+  filter: invert();
+}
 
 .watch .video img {
   -webkit-user-select: none;
@@ -304,6 +335,11 @@ img {
 
 .other .comments .comment .c-like {
   width: 17px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  -webkit-user-drag: none;
+  -moz-user-select: none;
 }
 
 .other .comments .comment .contributor {
@@ -452,4 +488,17 @@ img {
 
 .other .r-video .video-data {
   flex-grow: 1;
+}
+
+.other .comments .loadmore {
+  margin-top: 5px;
+  margin-left: 30%;
+  margin-left: 30%;
+  width: 40%;
+  text-decoration: underline;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  -moz-user-select: none;
 }
