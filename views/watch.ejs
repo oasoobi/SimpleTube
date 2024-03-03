@@ -4,7 +4,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>SimpleTube</title>
-    <link rel="stylesheet" href="../../styles/watch">
+    <link rel="stylesheet" href="/styles/watch">
+    <link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css" />
 </head>
 
 <body>
@@ -12,7 +13,7 @@
         <h1><a href="/">SimpleTube</a></h1>
         <div class="buttons">
             <input type="text" placeholder="search" id="headerSearch">
-            <a href="settings"><img src="../icons/settings" alt="settings"></a>
+            <a href="/settings"><img src="/icons/settings" alt="settings"></a>
         </div>
     </header>
     <div id="load-anim">
@@ -36,9 +37,7 @@
             <div class="watch">
                 <div class="video-thumbnail" id="video">
                     <img src="" alt="Thumbnail" id="video-thumbnail" onload="thumbnailLoaded()">
-                    <div class="playbtn">
-                        <img src="../../icons/play" alt="再生">   
-                    </div>
+                    <video id="player" controls></video>
                 </div>
                 <div class="video-info">
                     <div>
@@ -48,14 +47,14 @@
                     <div class="statistics">
                         <p id="view-count"></p>
                         <p id="release-date"></p>
-                        <img src="../../icons/good" alt="good: ">
+                        <img src="/icons/good" alt="good: ">
                         <p id="like-count"></p>
                     </div>
                     <div class="channel-info">
                         <div class="channel">
                             <img src="" alt="" class="icon" id="author-icon">
                             <p id="author"></p>
-                            <img src="../../icons/verified" alt="verified" class="verified">
+                            <img src="/icons/verified" alt="verified" class="verified">
                             <p id="subCountText"></p>
                         </div>
                         <button type="button" onclick="channelbtn()">チャンネルを見る</button>
@@ -79,7 +78,8 @@
     circle.style.animationPlayState = 'running';
     let data;
     let commentData;
-    let videoUrls;
+    let audios = [];
+    let videos = [];
     const videoId = "<%- videoId %>";
     setData();
     setComment();
@@ -145,12 +145,13 @@
         loadAnim: document.getElementById("load-anim"),
         videoThumbnail: document.getElementById("video-thumbnail"),
         comments: document.getElementById("comments"),
-        video: document.getElementById("video")
+        video: document.getElementById("video"),
+        player: document.getElementById("player")
     }
 
-    videoDatas.video.addEventListener("click",playVideo());
+    videoDatas.video.addEventListener("click", playVideo());
 
-    
+
     async function loadReply(continuation, commentId) {
         try {
             document.getElementById(commentId).style.display = "none";
@@ -193,11 +194,13 @@
             console.error("エラーが発生しました。", error);
         }
     }
+
     async function setData() {
         try {
             const response = await fetch("../../api/videos/" + videoId);
             const videoData = await response.json();
             data = videoData;
+
             videoDatas.title.textContent = videoData.title;
             videoDatas.viewCount.textContent = videoData.viewCount + " 回視聴";
             videoDatas.likeCount.textContent = videoData.likeCount;
@@ -206,7 +209,32 @@
             videoDatas.subCountText.textContent = "登録者数 " + videoData.subCountText + " 人";
             videoDatas.authorIcon.src = videoData.authorThumbnails[0].url;
             videoDatas.authorIcon.alt = videoData.author;
-            videoUrls = videoData.adaptiveFormats;
+            const formats = videoData.adaptiveFormats;
+            formats.forEach((data, index) => {
+                if (data.container == "m4a") {
+                    audios.push(index);
+                } else if (data.type.includes("video/mp4")) {
+                    videos.push(index);
+                }
+            })
+
+            const player = document.getElementById("player");
+            videos.forEach(item => {
+                const videoSource = document.createElement("source");
+                videoSource.src = videoData.adaptiveFormats[item].url;
+                videoSource.type = videoData.adaptiveFormats[item].qualityLabel;
+                videoSource.type = `${videoData.adaptiveFormats[item].type}`.split(";")[0];
+
+                player.appendChild(videoSource);
+            })
+            // const plyr = new Plyr("#player");
+
+            // const audioSource = document.createElement("source");
+            // console.log(videoData.adaptiveFormats[audios[audios.length -1]])
+            // audioSource.src = videoData.adaptiveFormats[audios[audios.length -1]].url;
+            // audioSource.type = videoData.adaptiveFormats[audios[audios.length - 1]].type;
+            // player.appendChild(audioSource);
+
             if (videoData.description == "") {
                 videoDatas.desc.style.display = "none";
             } else {
@@ -240,7 +268,8 @@
     }
 
     async function playVideo() {
-        const audios = videoUrls
+        const player = document.getElementById("player");
+
     }
 </script>
 

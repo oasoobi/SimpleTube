@@ -3,10 +3,40 @@ const path = require("path");
 const apiRouter = require("./routes/api");
 const searchRouter = require("./routes/search");
 const watchRouter = require("./routes/play");
+const config = require("./config");
+const cookieParser = require('cookie-parser')
 const app = express();
-const port = 3000;
+const port = 3200;
 app.use(express.json());
 app.set("view engine", "ejs");
+app.use(cookieParser())
+app.use((req, res, next) => {
+    console.log(req.path);
+    if (req.path.startsWith("/api/auth")) {
+        next();
+    } else {
+        try {
+            if (config.auth.enabled) {
+                const authCode = req.cookies.authcode;
+                if (!authCode) return res.status(400).sendFile(path.join(__dirname, "static/pages/error", "400.html"));
+                if (authCode === config.auth.auth_code) {
+                    next();
+                } else {
+                    res.status(400).sendFile(path.join(__dirname, "static/pages/error", "400.html"));
+                }
+            } else {
+                res.redirect("/");
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+
+});
+
+app.use("/api", apiRouter); //ルートの読み込み
+
 
 app.use((req, res, next) => {
     if (req.url === "/") {
@@ -32,10 +62,8 @@ app.use((req, res, next) => {
     }
     next(); // 次のミドルウェアに処理を渡す
 
-    // res.sendFile(path.join(__dirname, "static/pages/error", "404.html"));
 });
 
-app.use("/api", apiRouter); //ルートの読み込み
 app.use("/search", searchRouter);
 app.use("/watch", watchRouter);
 
@@ -46,4 +74,9 @@ app.use((req, res, err) => {
 
 app.listen(port, () => {
     console.log(`Server is running on http://localhost:${port}`);
+    
+    if (config.auth.enabled) {
+        console.log(`アクセスする前に認証が必要です。http://localhost:${port}/api/auth?c=${config.auth.auth_code}`);
+    }
+    
 });

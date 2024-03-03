@@ -111,15 +111,11 @@ img {
   margin-bottom: 0.5rem;
   border-radius: 8px;
 }
-.watch .video-thumbnail {
-  position: relative;
+
+#video {
   display: flex;
   justify-content: center;
   align-items: center;
-
-}
-
-.watch #video-thumbnail {
   -webkit-user-select: none;
   -moz-user-select: none;
   user-select: none;
@@ -127,7 +123,7 @@ img {
   -moz-user-select: none;
 }
 
-.watch .video-thumbnail .playbtn {
+/* .watch .video-thumbnail .playbtn {
   position: absolute;
 }
 
@@ -141,7 +137,7 @@ img {
   -webkit-user-drag: none;
   -moz-user-select: none;
   filter: invert();
-}
+} */
 
 .watch .video img {
   -webkit-user-select: none;

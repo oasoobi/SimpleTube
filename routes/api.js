@@ -1,8 +1,10 @@
-
+const path = require("path");
 const axios = require("axios");
 const express = require("express");
 const iconv = require('iconv-lite');
+const config = require("../config");
 const router = express.Router();
+
 
 router.get("/suggest", async (req, res) => {
   const query = req.query.q;
@@ -26,6 +28,22 @@ router.get("/search/:q/:page?", async (req, res) => {
   const response = await axios.get(apiUrl);
   const data = await response.data;
   res.json(data);
+})
+
+router.get("/auth", (req, res) => {
+  const authCode = req.query.c;
+  if (config.auth.enabled) {
+    if (authCode === config.auth.auth_code) {
+      console.log("認証に成功！");
+      res.cookie("authcode", authCode, { maxAge: 3600000, httpOnly: true });
+      res.redirect("/");
+    } else {
+      res.sendFile(path.join(__dirname, "../static/pages/error", "400.html"));
+    }
+  } else {
+    res.redirect("/");
+  }
+
 })
 
 router.get('/image', async (req, res) => {
