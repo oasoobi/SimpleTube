@@ -36,4 +36,6 @@ continuationはコメントapiから取得可能。
 
 format=htmlをつけるとhtmlとして取得可能
 
-https://lopan.jp/memorandum/loading-circle/
+#Todo
+- チャンネルページ
+- プレイリスト
