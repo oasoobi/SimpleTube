@@ -1,6 +1,6 @@
-# Simple Youtube
+# SimpleTube
 
-日本語用です。
+クソコードかもしれませんが、許してください()
 
 ## Credit
 - [feathericons](https://feathericons.com)
@@ -8,8 +8,12 @@
 - [noto sans JP](https://fonts.google.com/noto/specimen/Noto+Sans+JP)
 
 # ScreenShots
+## TOP
 ![TOP](https://i.imgur.com/Kygar7S.png)
+## Search
 ![Search](https://i.imgur.com/5aGVPut.png)
+## Watch
+![watch](https://i.imgur.com/4gA2wR8.png)
 
 # API
 ### 検索候補を取得
@@ -22,7 +26,7 @@
 api/videos/[videoId]
 ### 動画のコメントを取得
 /api/videos/[videoId]/comments
-### コメントの返信を取得
+### コメントをさらに取得
 /api/videos/[videoId]/comments/[continuation]
 # 忘備録
 ### 返信の取得方法
