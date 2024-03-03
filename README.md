@@ -36,6 +36,6 @@ continuationはコメントapiから取得可能。
 
 format=htmlをつけるとhtmlとして取得可能
 
-#Todo
+# Todo
 - チャンネルページ
 - プレイリスト
