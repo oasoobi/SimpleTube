@@ -6,10 +6,11 @@ const watchRouter = require("./routes/play");
 const config = require("./config");
 const cookieParser = require('cookie-parser')
 const app = express();
-const port = 3200;
+const port = 3000;
 app.use(express.json());
 app.set("view engine", "ejs");
 app.use(cookieParser())
+
 app.use((req, res, next) => {
     console.log(req.path);
     if (req.path.startsWith("/api/auth")) {
@@ -74,9 +75,9 @@ app.use((req, res, err) => {
 
 app.listen(port, () => {
     console.log(`Server is running on http://localhost:${port}`);
-    
+
     if (config.auth.enabled) {
         console.log(`アクセスする前に認証が必要です。http://localhost:${port}/api/auth?c=${config.auth.auth_code}`);
     }
-    
+
 });
