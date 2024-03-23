@@ -16,6 +16,11 @@ express incov EJS axios
 ![watch](https://i.imgur.com/4gA2wR8.png)
 
 # API
+
+### 認証
+
+/api/auth?c=[Token]
+
 ### 検索候補を取得
 /api/suggest?q=[keyword]
 ### 検索結果を取得
