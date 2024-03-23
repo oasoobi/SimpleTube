@@ -108,4 +108,17 @@ router.get("/videos/:id", async (req, res) => {
   }
 });
 
+router.get("/channels/:id", async (req, res) => {
+  try {
+    const cid = req.params.id;
+    const apiUrl = `https://yt.artemislena.eu/api/v1/channels/${cid}`;
+    const response = await axios.get(apiUrl);
+    const data = await response.data;
+    res.json(data);
+  } catch (error) {
+    console.error("Error: ", error);
+    res.status(500).send("Internal Server Error");
+  }
+})
+
 module.exports = router;

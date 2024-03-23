@@ -26,7 +26,7 @@ app.use((req, res, next) => {
                     res.status(400).sendFile(path.join(__dirname, "static/pages/error", "400.html"));
                 }
             } else {
-                res.redirect("/");
+                next();
             }
         } catch (error) {
             console.log(error);

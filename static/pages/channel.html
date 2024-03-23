@@ -1,0 +1,60 @@
+<html lang="ja">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>SimpleTube</title>
+    <link rel="stylesheet" href="/styles/channel">
+</head>
+
+<body>
+    <header>
+        <h1><a href="/">SimpleTube</a></h1>
+        <div class="buttons">
+            <input type="text" placeholder="search" id="headerSearch">
+            <a href="/settings"><img src="/icons/settings" alt="settings"></a>
+        </div>
+    </header>
+    <main>
+        <div class="author">
+            <img id="author_banner" alt="">
+            <div id="author_info">
+                <div class="author_names">
+                    <h2 id="author_name">DECO*27</h2>
+                    <img src="/icons/verified" id="verified" alt="">
+                </div>
+                <p id="author_about">1780000 人が登録しています</p>
+            </div>
+
+        </div>
+    </main>
+</body>
+<script>
+    const author_name = document.getElementById("author_name");
+    const author_banner = document.getElementById("author_banner");
+    load();
+    async function load() {
+        const apiUrl = "/api" + window.location.pathname.replace("channel", "channels");
+        console.log(apiUrl);
+        const response = await fetch(apiUrl);
+        const data = await response.json();
+        const author_banner_url = data.authorBanners[0].url;
+        console.log(author_banner_url);
+        author_banner.src = author_banner_url;
+        author_name.textContent = data.author;
+    }
+
+
+    const headerSearch = document.getElementById("headerSearch");
+    let results = document.getElementById("results");
+    const more = document.getElementById("more");
+    const load_anim = document.getElementById("load-anim");
+
+    headerSearch.addEventListener("keydown", function () {
+        if (event.key == "Enter") {
+            window.location.href = "../../search/" + headerSearch.value.replace(/ /g, "+");
+        }
+    });
+</script>
+
+</html>
