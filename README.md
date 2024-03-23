@@ -1,6 +1,6 @@
 # SimpleTube
 
-express incov EJS axios
+nodejsで動くyoutube
 
 ## Credit
 - [feathericons](https://feathericons.com)
