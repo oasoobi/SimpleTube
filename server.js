@@ -19,11 +19,11 @@ app.use((req, res, next) => {
         try {
             if (config.auth.enabled) {
                 const authCode = req.cookies.authcode;
-                if (!authCode) return res.status(400).sendFile(path.join(__dirname, "static/pages/error", "400.html"));
+                if (!authCode) return res.status(401).sendFile(path.join(__dirname, "static/pages/error", "401.html"));
                 if (authCode === config.auth.auth_code) {
                     next();
                 } else {
-                    res.status(400).sendFile(path.join(__dirname, "static/pages/error", "400.html"));
+                    res.status(401).sendFile(path.join(__dirname, "static/pages/error", "401.html"));
                 }
             } else {
                 next();
