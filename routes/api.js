@@ -24,7 +24,7 @@ router.get("/suggest", async (req, res) => {
   }
 });
 router.get("/search/:q/:page?", async (req, res) => {
-  const apiUrl = `https://yt.artemislena.eu/api/v1/search?q=${req.params.q}&page=${req.params.page || "1"}&region=JP`;
+  const apiUrl = `https://invidious.fdn.fr/api/v1/search?q=${req.params.q}&page=${req.params.page || "1"}&region=JP`;
   const response = await axios.get(apiUrl);
   const data = await response.data;
   res.json(data);
@@ -53,10 +53,10 @@ router.get('/image', async (req, res) => {
     let apiUrl;
     if (quarity) {
       if (quarity == "max") {
-        apiUrl = `https://yt.artemislena.eu/vi/${vid}/maxres.jpg`;
+        apiUrl = `https://invidious.fdn.fr/vi/${vid}/maxres.jpg`;
       }
     } else {
-      apiUrl = `https://yt.artemislena.eu/vi/${vid}/mqdefault.jpg`;
+      apiUrl = `https://invidious.fdn.fr/vi/${vid}/mqdefault.jpg`;
     }
     const response = await axios.get(apiUrl, { responseType: 'arraybuffer' });
     res.setHeader('Content-Type', 'image/jpeg');
@@ -70,7 +70,7 @@ router.get('/image', async (req, res) => {
 router.get("/videos/:id/comments", async (req, res) => {
   try {
     const vid = req.params.id;
-    const apiUrl = `https://yt.artemislena.eu/api/v1/comments/${vid}?hl=ja`;
+    const apiUrl = `https://invidious.fdn.fr/api/v1/comments/${vid}?hl=ja`;
     const response = await axios.get(apiUrl);
     const data = await response.data;
     res.json(data);
@@ -85,7 +85,7 @@ router.get("/videos/:id/comments/:continuation", async (req, res) => {
   try {
     const vid = req.params.id;
     const continuation = req.params.continuation;
-    const apiUrl = `https://yt.artemislena.eu/api/v1/comments/${vid}?hl=ja&thin_mode=false&continuation=${continuation}&action=action_get_comment_replies`;
+    const apiUrl = `https://invidious.fdn.fr/api/v1/comments/${vid}?hl=ja&thin_mode=false&continuation=${continuation}&action=action_get_comment_replies`;
     const response = await axios.get(apiUrl);
     const data = await response.data;
     res.json(data);
@@ -98,7 +98,7 @@ router.get("/videos/:id/comments/:continuation", async (req, res) => {
 router.get("/videos/:id", async (req, res) => {
   try {
     const vid = req.params.id;
-    const apiUrl = `https://yt.artemislena.eu/api/v1/videos/${vid}`;
+    const apiUrl = `https://invidious.fdn.fr/api/v1/videos/${vid}`;
     const response = await axios.get(apiUrl);
     const data = await response.data;
     res.json(data);
@@ -111,7 +111,7 @@ router.get("/videos/:id", async (req, res) => {
 router.get("/channels/:id", async (req, res) => {
   try {
     const cid = req.params.id;
-    const apiUrl = `https://yt.artemislena.eu/api/v1/channels/${cid}`;
+    const apiUrl = `https://invidious.fdn.fr/api/v1/channels/${cid}`;
     const response = await axios.get(apiUrl);
     const data = await response.data;
     res.json(data);
