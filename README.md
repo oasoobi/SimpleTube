@@ -1,6 +1,6 @@
 # SimpleTube
 
-express incov EJS axios
+nodejsで動くyoutube
 
 ## Credit
 - [feathericons](https://feathericons.com)
@@ -42,5 +42,7 @@ continuationはコメントapiから取得可能。
 format=htmlをつけるとhtmlとして取得可能
 
 # Todo
-- チャンネルページ
-- プレイリスト
+- チャンネルページ 制作中
+- プレイリスト 未実装
+- 再生ページ　制作中
+- 検索ページ　完成
